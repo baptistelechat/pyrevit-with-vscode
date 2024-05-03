@@ -27,8 +27,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "pyrevit-with-vscode.installPythonExtension",
-        "title": "%installPythonExtension.title%"
+        "command": "pyrevit-with-vscode.pythonExtension",
+        "title": "%pythonExtension%"
+      },
+      {
+        "command": "pyrevit-with-vscode.revitApiStubs",
+        "title": "%revitApiStubs%"
+      },
+      {
+        "command": "pyrevit-with-vscode.pyRevitLib",
+        "title": "%pyRevitLib%"
+      },
+      {
+        "command": "pyrevit-with-vscode.pythonSettings",
+        "title": "%pythonSettings%"
       }
     ]
   },
