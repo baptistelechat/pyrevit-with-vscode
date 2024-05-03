@@ -29,6 +29,10 @@
       {
         "command": "pyrevit-with-vscode.installPythonExtension",
         "title": "%installPythonExtension.title%"
+      },
+      {
+        "command": "pyrevit-with-vscode.copyRevitApiStubs",
+        "title": "%copyRevitApiStubs.title%"
       }
     ]
   },
