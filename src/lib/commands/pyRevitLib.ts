@@ -41,9 +41,9 @@ const pyRevitLib = vscode.commands.registerCommand(
       return;
     }
 
-    vscode.window.showInformationMessage(
-      vscode.l10n.t("pyRevit is already installed in %APPDATA%.")
-    );
+    // vscode.window.showInformationMessage(
+    //   vscode.l10n.t("pyRevit is already installed in %APPDATA%.")
+    // );
   }
 );
 

@@ -37,9 +37,9 @@ const pythonExtension = vscode.commands.registerCommand(
       return;
     }
 
-    vscode.window.showInformationMessage(
-      vscode.l10n.t("The Python extension is installed and activated.")
-    );
+    // vscode.window.showInformationMessage(
+    //   vscode.l10n.t("The Python extension is installed and activated.")
+    // );
   }
 );
 

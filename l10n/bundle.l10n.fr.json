@@ -5,9 +5,12 @@
   "The Python extension is required to use pyRevit-with-vscode. Do you want to install or enable it now?": "L'extension Python est requise pour utiliser pyRevit-with-vscode. Voulez-vous l'installer ou l'activer maintenant ?",
   "The Python extension is installed and activated.": "L'extension Python est installée et activée. Vous pouvez maintenant utiliser pyRevit-with-vscode.",
   "pyRevit-with-vscode only supports Windows operating system.": "pyRevit-with-vscode n'est compatible qu'avec le système d'exploitation Windows",
-  "The Revit API Stubs are required to use pyRevit-with-vscode. Do you want to download it now?": "Les Stubs Revit API sont requises pour utiliser pyRevit-with-vscode. Voulez-vous les télécharger maintenant ?",
-  "The Revit API Stubs are download and place in %APPDATA%.": "Les Stubs Revit API sont téléchargés et placés dans %APPDATA%.",
-  "The Revit API Stubs are already installed in %APPDATA%.":"Les Stubs Revit API sont déjà installés dans %APPDATA%.",
+  "The Revit API Stubs are required to use pyRevit-with-vscode. Do you want to download it now?": "Les Revit API Stubs sont requises pour utiliser pyRevit-with-vscode. Voulez-vous les télécharger maintenant ?",
+  "The Revit API Stubs are download and place in %APPDATA%.": "Les Revit API Stubs sont téléchargés et placés dans %APPDATA%.",
+  "The Revit API Stubs are already installed in %APPDATA%.": "Les Revit API Stubs sont déjà installés dans %APPDATA%.",
   "pyRevit is required to use pyRevit-with-vscode. Do you want to download it now?": "pyRevit est nécessaire pour utiliser pyRevit-with-vscode. Voulez-vous le télécharger maintenant ?",
-  "pyRevit is already installed in %APPDATA%.": "pyRevit est déjà installé dans %APPDATA%."
+  "pyRevit is already installed in %APPDATA%.": "pyRevit est déjà installé dans %APPDATA%.",
+  "\"python.analysis.extraPaths\" setting has been updated in settings.json.": "\"python.analysis.extraPaths\" a été mis à jour dans settings.json.",
+  "Select the Revit API Stubs versions": "Sélectionnez les versions de Revit API Stubs",
+  "Revit API Stubs versions selection aborted": "La sélection des versions de Revit API Stubs a été annulée"
 }

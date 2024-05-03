@@ -1,5 +1,6 @@
 {
   "pythonExtension": "pyRevit with VSCode: Install Python extension",
   "revitApiStubs": "pyRevit with VSCode: Install Revit API Stubs",
-  "pyRevitLib": "pyRevit with VSCode: Install pyRevit"
+  "pyRevitLib": "pyRevit with VSCode: Install pyRevit",
+  "pythonSettings":"pyRevit with VSCode: Update \"python.analysis.extraPaths\""
 }

@@ -37,6 +37,10 @@
       {
         "command": "pyrevit-with-vscode.pyRevitLib",
         "title": "%pyRevitLib%"
+      },
+      {
+        "command": "pyrevit-with-vscode.pythonSettings",
+        "title": "%pythonSettings%"
       }
     ]
   },

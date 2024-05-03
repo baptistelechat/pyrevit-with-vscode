@@ -46,9 +46,9 @@ const revitApiStubs = vscode.commands.registerCommand(
       return;
     }
 
-    vscode.window.showInformationMessage(
-      vscode.l10n.t("The Revit API Stubs are already installed in %APPDATA%.")
-    );
+    // vscode.window.showInformationMessage(
+    //   vscode.l10n.t("The Revit API Stubs are already installed in %APPDATA%.")
+    // );
   }
 );
 
