@@ -2,5 +2,6 @@
   "The Python extension is required to use pyRevit-with-vscode. Do you want to install or enable it now?": "L'extension Python est requise pour utiliser pyRevit-with-vscode. Voulez-vous l'installer ou l'activer maintenant ?",
   "The Python extension is installed and activated. You can now use pyRevit-with-vscode.": "L'extension Python est installée et activée. Vous pouvez maintenant utiliser pyRevit-with-vscode.",
   "Install": "Installer",
-  "Enable": "Activer"
+  "Enable": "Activer",
+  "pyRevit-with-vscode only supports Windows operating system.": "pyRevit-with-vscode n'est compatible qu'avec le système d'exploitation Windows"
 }

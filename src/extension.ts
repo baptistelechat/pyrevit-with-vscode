@@ -1,16 +1,20 @@
 import * as vscode from "vscode";
 import installPythonExtensionCommand from "./lib/command/installPythonExtensionCommand";
-import installPythonExtension from "./lib/utils/installPythonExtension";
+import checkOs from "./lib/utils/checkOs";
 
 export function activate(context: vscode.ExtensionContext) {
-  // Afficher le message d'information lorsque l'extension est activée
-  installPythonExtension();
+  // Check the user's operating system and display an error message if it's not a win32 user
+  const os = checkOs();
 
-  // Ajouter les commandes au contexte de l'extension
-  context.subscriptions.push(installPythonExtensionCommand);
+  if (os) {
+    // Add commands to extension context
+    context.subscriptions.push(installPythonExtensionCommand);
 
-  // Afficher le message d'information une fois que l'extension est activée
-  vscode.commands.executeCommand("pyrevit-with-vscode.installPythonExtension");
+    // Display information message when extension is activated
+    vscode.commands.executeCommand(
+      "pyrevit-with-vscode.installPythonExtension"
+    );
+  }
 }
 
 export function deactivate() {}
