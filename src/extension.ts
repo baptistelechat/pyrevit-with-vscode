@@ -1,22 +1,24 @@
 import * as vscode from "vscode";
+import pythonExtension from "./lib/commands/pythonExtension";
+import revitApiStubs from "./lib/commands/revitApiStubs";
 import checkOs from "./lib/utils/checkOs";
-import copyRevitApiStubs from "./lib/commands/copyRevitApiStubs";
-import installPythonExtension from "./lib/commands/installPythonExtension";
+import pyRevitLib from "./lib/commands/pyrevitLib";
 
 export function activate(context: vscode.ExtensionContext) {
-  
   const os = checkOs();
 
   if (os) {
     // Add commands to extension context
-    context.subscriptions.push(installPythonExtension);
-    context.subscriptions.push(copyRevitApiStubs);
+    context.subscriptions.push(pythonExtension);
+    context.subscriptions.push(revitApiStubs);
+    context.subscriptions.push(pyRevitLib);
 
     // Display information message when extension is activated
     vscode.commands.executeCommand(
       "pyrevit-with-vscode.installPythonExtension"
     );
-    vscode.commands.executeCommand("pyrevit-with-vscode.copyRevitApiStubs");
+    vscode.commands.executeCommand("pyrevit-with-vscode.revitApiStubs");
+    vscode.commands.executeCommand("pyrevit-with-vscode.pyRevitLib");
   }
 }
 

@@ -3,8 +3,8 @@ import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
 
-const copyRevitApiStubs = vscode.commands.registerCommand(
-  "pyrevit-with-vscode.copyRevitApiStubs",
+const revitApiStubs = vscode.commands.registerCommand(
+  "pyrevit-with-vscode.revitApiStubs",
   () => {
     // Check if Revit API Stubs are installed
     const sourcePath = path.join(
@@ -47,11 +47,9 @@ const copyRevitApiStubs = vscode.commands.registerCommand(
     }
 
     vscode.window.showInformationMessage(
-      vscode.l10n.t(
-        "The Revit API Stubs are download and place in %APPDATA%."
-      )
+      vscode.l10n.t("The Revit API Stubs are already installed in %APPDATA%.")
     );
   }
 );
 
-export default copyRevitApiStubs;
+export default revitApiStubs;

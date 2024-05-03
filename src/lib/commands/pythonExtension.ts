@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-const installPythonExtension = vscode.commands.registerCommand(
+const pythonExtension = vscode.commands.registerCommand(
   "pyrevit-with-vscode.installPythonExtension",
   () => {
     // Check if the Python extension is installed
@@ -38,11 +38,9 @@ const installPythonExtension = vscode.commands.registerCommand(
     }
 
     vscode.window.showInformationMessage(
-      vscode.l10n.t(
-        "The Python extension is installed and activated."
-      )
+      vscode.l10n.t("The Python extension is installed and activated.")
     );
   }
 );
 
-export default installPythonExtension;
+export default pythonExtension;

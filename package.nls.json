@@ -1,4 +1,5 @@
 {
-  "installPythonExtension.title": "pyRevit with VSCode: Install Python extension",
-  "copyRevitApiStubs.title": "pyRevit with VSCode: Install Revit API Stubs"
+  "pythonExtension": "pyRevit with VSCode: Install Python extension",
+  "revitApiStubs": "pyRevit with VSCode: Install Revit API Stubs",
+  "pyRevitLib": "pyRevit with VSCode: Install pyRevit"
 }
