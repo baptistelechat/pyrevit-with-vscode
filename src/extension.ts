@@ -1,15 +1,15 @@
 import * as vscode from "vscode";
-import checkForPythonExtension from "./lib/utils/checkForPythonExtension";
+import checkPythonExtensionInstallation from "./lib/utils/checkPythonExtensionInstallation";
 
 export function activate(context: vscode.ExtensionContext) {
   // Afficher le message d'information lorsque l'extension est activée
-  checkForPythonExtension();
+  checkPythonExtensionInstallation();
 
   // Enregistrer une commande pour afficher un message d'information
   const disposable = vscode.commands.registerCommand(
     "pyrevit-with-vscode.showInstallMessage",
     () => {
-      checkForPythonExtension();
+      checkPythonExtensionInstallation();
     }
   );
 

@@ -1,6 +1,10 @@
 import * as vscode from "vscode";
 
-const checkForPythonExtension = () => {
+const locale = vscode.env.language;
+
+const { t } = vscode.l10n;
+
+const checkPythonExtensionInstallation = () => {
   // Vérifier si l'extension Python est installée
   const pythonExtensionId = "ms-python.python";
   const pythonExtension = vscode.extensions.getExtension(pythonExtensionId);
@@ -8,12 +12,12 @@ const checkForPythonExtension = () => {
   if (!pythonExtension) {
     vscode.window
       .showErrorMessage(
-        "pyRevit with VSCode | L'extension Python est requise pour utiliser cette extension. Voulez-vous l'installer ou l'activer maintenant ?",
-        "Installer",
-        "Activer"
+        t("pyrevit-with-vscode.showInstallMessage.errorMessage"),
+        t("pyrevit-with-vscode.install"),
+        t("pyrevit-with-vscode.activate")
       )
       .then((action) => {
-        if (action === "Installer") {
+        if (action === t("pyrevit-with-vscode.install")) {
           vscode.commands.executeCommand(
             "workbench.extensions.search",
             pythonExtensionId
@@ -23,7 +27,7 @@ const checkForPythonExtension = () => {
             pythonExtensionId
           );
         }
-        if (action === "Activer") {
+        if (action === t("pyrevit-with-vscode.activate")) {
           vscode.commands.executeCommand(
             "workbench.extensions.search",
             pythonExtensionId
@@ -35,8 +39,8 @@ const checkForPythonExtension = () => {
 
   // Si l'extension Python est installée et activée, poursuivre l'activation de votre extension
   vscode.window.showInformationMessage(
-    "pyRevit with VSCode | L'extension Python est installée et activée. Vous pouvez maintenant utiliser cette extension."
+    t("pyrevit-with-vscode.showInstallMessage.successMessage")
   );
 };
 
-export default checkForPythonExtension;
+export default checkPythonExtensionInstallation;
