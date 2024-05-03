@@ -1,7 +1,0 @@
-{
-  "pyrevit-with-vscode.showInstallMessage.title": "Check Python extension installation",
-  "pyrevit-with-vscode.showInstallMessage.errorMessage": "The Python extension is required to use this extension. Do you want to install or enable it now?",
-  "pyrevit-with-vscode.showInstallMessage.successMessage": "The Python extension is installed and activated. You can now use this extension.",
-  "pyrevit-with-vscode.install": "Install",
-  "pyrevit-with-vscode.activate": "Enable"
-}

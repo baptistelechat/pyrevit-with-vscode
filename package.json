@@ -23,21 +23,14 @@
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
+  "l10n": "./l10n",
   "contributes": {
     "commands": [
       {
-        "command": "pyrevit-with-vscode.showInstallMessage",
-        "title": "%pyrevit-with-vscode.showInstallMessage.title%"
+        "command": "pyrevit-with-vscode.installPythonExtension",
+        "title": "%installPythonExtension.title%"
       }
-    ],
-    "l10n": {
-      "config": {
-        "locale": "en"
-      },
-      "availableLanguages": {
-        "*": "i18n/package.nls.json"
-      }
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run compile",
@@ -53,9 +46,13 @@
     "@types/vscode": "^1.88.0",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
     "@typescript-eslint/parser": "^7.7.1",
+    "@vscode/l10n-dev": "^0.0.35",
     "@vscode/test-cli": "^0.0.8",
     "@vscode/test-electron": "^2.3.9",
     "eslint": "^8.57.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18"
   }
 }
