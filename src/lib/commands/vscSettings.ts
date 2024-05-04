@@ -3,8 +3,8 @@ import * as vscode from "vscode";
 import pyRevitMasterPath from "../constants/pyRevitMasterPath";
 import revitApiStubsPath from "../constants/revitApiStubsPath";
 
-const pythonSettings = vscode.commands.registerCommand(
-  "pyrevit-with-vscode.pythonSettings",
+const vscSettings = vscode.commands.registerCommand(
+  "pyrevit-with-vscode.vscSettings",
   async () => {
     // Check "python.autoComplete.extraPaths" in setting.json
     const config = vscode.workspace.getConfiguration("python");
@@ -25,7 +25,7 @@ const pythonSettings = vscode.commands.registerCommand(
 
     const selectedVersions = await vscode.window.showQuickPick(items, {
       canPickMany: true,
-      placeHolder: vscode.l10n.t("Select the Revit API Stubs versions"),
+      placeHolder: vscode.l10n.t("Select the Revit API versions"),
     });
 
     if (selectedVersions) {
@@ -45,16 +45,14 @@ const pythonSettings = vscode.commands.registerCommand(
       );
 
       vscode.window.showInformationMessage(
-        vscode.l10n.t(
-          '"python.autoComplete.extraPaths" setting has been updated in settings.json.'
-        )
+        vscode.l10n.t('"settings.json" has been updated.')
       );
     } else {
       vscode.window.showErrorMessage(
-        vscode.l10n.t("Revit API Stubs versions selection aborted")
+        vscode.l10n.t("Revit API versions selection aborted")
       );
     }
   }
 );
 
-export default pythonSettings;
+export default vscSettings;

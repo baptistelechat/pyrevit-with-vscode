@@ -41,8 +41,8 @@
         "title": "%pyRevitLib%"
       },
       {
-        "command": "pyrevit-with-vscode.pythonSettings",
-        "title": "%pythonSettings%"
+        "command": "pyrevit-with-vscode.vscSettings",
+        "title": "%vscSettings%"
       },
       {
         "command": "pyrevit-with-vscode.revitApiDocs",

@@ -10,7 +10,7 @@
   "The Revit API Stubs are already installed in %APPDATA%.": "Les Revit API Stubs sont déjà installés dans %APPDATA%.",
   "pyRevit is required to use pyRevit-with-vscode. Do you want to download it now?": "pyRevit est nécessaire pour utiliser pyRevit-with-vscode. Voulez-vous le télécharger maintenant ?",
   "pyRevit is already installed in %APPDATA%.": "pyRevit est déjà installé dans %APPDATA%.",
-  "\"python.autoComplete.extraPaths\" setting has been updated in settings.json.": "\"python.autoComplete.extraPaths\" a été mis à jour dans settings.json.",
-  "Select the Revit API Stubs versions": "Sélectionnez les versions de Revit API Stubs",
-  "Revit API Stubs versions selection aborted": "La sélection des versions de Revit API Stubs a été annulée"
+  "\"settings.json\" has been updated.": "\"settings.json\" a été mis à jour.",
+  "Select the Revit API versions": "Sélectionnez les versions de Revit API",
+  "Revit API versions selection aborted": "La sélection des versions de Revit API a été annulée"
 }

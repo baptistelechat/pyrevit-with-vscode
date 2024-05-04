@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 import pyRevitDocs from "./lib/commands/pyRevitDocs";
 import pyRevitLib from "./lib/commands/pyRevitLib";
 import pythonExtension from "./lib/commands/pythonExtension";
-import pythonSettings from "./lib/commands/pythonSettings";
+import vscSettings from "./lib/commands/vscSettings";
 import revitApiDocs from "./lib/commands/revitApiDocs";
 import revitApiStubs from "./lib/commands/revitApiStubs";
 import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
@@ -19,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(pythonExtension);
     context.subscriptions.push(revitApiStubs);
     context.subscriptions.push(pyRevitLib);
-    context.subscriptions.push(pythonSettings);
+    context.subscriptions.push(vscSettings);
     context.subscriptions.push(revitApiDocs(context));
     context.subscriptions.push(pyRevitDocs(context));
 
@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
     const config = vscode.workspace.getConfiguration("python");
     const extraPaths = config.get<string[]>("autoComplete.extraPaths");
     if (!extraPaths || extraPaths.length === 0) {
-      vscode.commands.executeCommand("pyrevit-with-vscode.pythonSettings");
+      vscode.commands.executeCommand("pyrevit-with-vscode.vscSettings");
     }
   }
 }
