@@ -1,40 +1,25 @@
-import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
+import pyRevitMasterPath from "../constants/pyRevitMasterPath";
+import revitApiStubsPath from "../constants/revitApiStubsPath";
 
 const pythonSettings = vscode.commands.registerCommand(
   "pyrevit-with-vscode.pythonSettings",
   async () => {
-    // Check "python.analysis.extraPaths" in setting.json
+    // Check "python.autoComplete.extraPaths" in setting.json
     const config = vscode.workspace.getConfiguration("python");
-    const revitApiStubsPathBase = path.join(
-      os.homedir(),
-      "AppData",
-      "Roaming",
-      "RevitAPI stubs"
-    );
-    const pyRevitLibPath = path.join(
-      os.homedir(),
-      "AppData",
-      "Roaming",
-      "pyRevit-Master",
-      "pyrevitlib"
-    );
+    const extraPaths = config.get<string[]>("autoComplete.extraPaths") || [];
 
     const revitApiStubsVersions = await vscode.workspace.fs.readDirectory(
-      vscode.Uri.file(revitApiStubsPathBase)
+      vscode.Uri.file(revitApiStubsPath)
     );
     const revitApiStubsVersionNames = revitApiStubsVersions
       .map((version) => version[0])
       .filter((name) => name.startsWith("RVT "));
 
-    const extraPaths = config.get<string[]>("analysis.extraPaths") || [];
-
     const items = revitApiStubsVersionNames.map((name) => {
       const label = name.replace("RVT ", "Revit ");
-      const picked = extraPaths.includes(
-        path.join(revitApiStubsPathBase, name)
-      );
+      const picked = extraPaths.includes(path.join(revitApiStubsPath, name));
       return { label, picked };
     });
 
@@ -47,21 +32,21 @@ const pythonSettings = vscode.commands.registerCommand(
       const newExtraPaths = [];
       selectedVersions.forEach((item) => {
         const version = item.label.replace("Revit ", "RVT ");
-        const revitApiStubsPath = path.join(revitApiStubsPathBase, version);
-        newExtraPaths.push(revitApiStubsPath);
+        const revitApiStubsVersionPath = path.join(revitApiStubsPath, version);
+        newExtraPaths.push(revitApiStubsVersionPath);
       });
 
-      newExtraPaths.push(pyRevitLibPath);
+      newExtraPaths.push(pyRevitMasterPath);
 
       config.update(
-        "analysis.extraPaths",
+        "autoComplete.extraPaths",
         newExtraPaths,
         vscode.ConfigurationTarget.Global
       );
 
       vscode.window.showInformationMessage(
         vscode.l10n.t(
-          '"python.analysis.extraPaths" setting has been updated in settings.json.'
+          '"python.autoComplete.extraPaths" setting has been updated in settings.json.'
         )
       );
     } else {

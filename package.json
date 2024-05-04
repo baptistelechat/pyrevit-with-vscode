@@ -43,6 +43,14 @@
       {
         "command": "pyrevit-with-vscode.pythonSettings",
         "title": "%pythonSettings%"
+      },
+      {
+        "command": "pyrevit-with-vscode.revitApiDocs",
+        "title": "%revitApiDocs%"
+      },
+      {
+        "command": "pyrevit-with-vscode.pyRevitDocs",
+        "title": "%pyRevitDocs%"
       }
     ],
     "snippets": [

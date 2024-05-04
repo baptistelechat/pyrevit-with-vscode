@@ -1,26 +1,12 @@
 import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
 import * as vscode from "vscode";
+import pyRevitMasterPath from "../constants/pyRevitMasterPath";
+import pyRevitPath from "../constants/pyRevitPath";
 
 const pyRevitLib = vscode.commands.registerCommand(
   "pyrevit-with-vscode.pyRevitLib",
   () => {
-    // Check if pyRevit Lib is installed
-    const pyRevitPath = path.join(
-      os.homedir(),
-      "AppData",
-      "Roaming",
-      "pyRevit"
-    );
-
-    const pyRevitMasterPath = path.join(
-      os.homedir(),
-      "AppData",
-      "Roaming",
-      "pyRevit-Master"
-    );
-
+    // Check if pyRevit is installed
     if (!fs.existsSync(pyRevitPath) || !fs.existsSync(pyRevitMasterPath)) {
       vscode.window
         .showErrorMessage(
@@ -38,12 +24,11 @@ const pyRevitLib = vscode.commands.registerCommand(
             );
           }
         });
-      return;
+    } else {
+      vscode.window.showInformationMessage(
+        vscode.l10n.t("pyRevit is already installed in %APPDATA%.")
+      );
     }
-
-    // vscode.window.showInformationMessage(
-    //   vscode.l10n.t("pyRevit is already installed in %APPDATA%.")
-    // );
   }
 );
 

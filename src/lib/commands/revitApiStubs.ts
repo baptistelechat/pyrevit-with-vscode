@@ -1,7 +1,7 @@
 import * as fs from "fs";
-import * as os from "os";
 import * as path from "path";
 import * as vscode from "vscode";
+import revitApiStubsPath from "../constants/revitApiStubsPath";
 
 const revitApiStubs = vscode.commands.registerCommand(
   "pyrevit-with-vscode.revitApiStubs",
@@ -17,14 +17,8 @@ const revitApiStubs = vscode.commands.registerCommand(
       "assets",
       "RevitAPI stubs"
     );
-    const targetPath = path.join(
-      os.homedir(),
-      "AppData",
-      "Roaming",
-      "RevitAPI stubs"
-    );
 
-    if (!fs.existsSync(targetPath)) {
+    if (!fs.existsSync(revitApiStubsPath)) {
       vscode.window
         .showErrorMessage(
           vscode.l10n.t(
@@ -34,8 +28,8 @@ const revitApiStubs = vscode.commands.registerCommand(
         )
         .then((action) => {
           if (action === vscode.l10n.t("Download")) {
-            fs.mkdirSync(targetPath, { recursive: true });
-            fs.cpSync(sourcePath, targetPath, { recursive: true });
+            fs.mkdirSync(revitApiStubsPath, { recursive: true });
+            fs.cpSync(sourcePath, revitApiStubsPath, { recursive: true });
             vscode.window.showInformationMessage(
               vscode.l10n.t(
                 "The Revit API Stubs are download and place in %APPDATA%."
@@ -43,12 +37,11 @@ const revitApiStubs = vscode.commands.registerCommand(
             );
           }
         });
-      return;
+    } else {
+      vscode.window.showInformationMessage(
+        vscode.l10n.t("The Revit API Stubs are already installed in %APPDATA%.")
+      );
     }
-
-    // vscode.window.showInformationMessage(
-    //   vscode.l10n.t("The Revit API Stubs are already installed in %APPDATA%.")
-    // );
   }
 );
 

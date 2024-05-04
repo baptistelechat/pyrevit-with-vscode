@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
 const pythonExtension = vscode.commands.registerCommand(
-  "pyrevit-with-vscode.installPythonExtension",
+  "pyrevit-with-vscode.pythonExtension",
   () => {
     // Check if the Python extension is installed
     const pythonExtensionId = "ms-python.python";
@@ -34,12 +34,13 @@ const pythonExtension = vscode.commands.registerCommand(
             );
           }
         });
-      return;
+    } else {
+      vscode.window.showInformationMessage(
+        vscode.l10n.t(
+          "The Python extension is already installed and activated."
+        )
+      );
     }
-
-    // vscode.window.showInformationMessage(
-    //   vscode.l10n.t("The Python extension is installed and activated.")
-    // );
   }
 );
 

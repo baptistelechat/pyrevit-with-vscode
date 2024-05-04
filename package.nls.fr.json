@@ -2,5 +2,7 @@
   "pythonExtension": "pyRevit with VSCode: Installer l'extension Python",
   "revitApiStubs": "pyRevit with VSCode: Installer les Stubs Revit API",
   "pyRevitLib": "pyRevit with VSCode: Installer pyRevit",
-  "pythonSettings": "pyRevit with VSCode: Mettre à jour \"python.analysis.extraPaths\""
+  "pythonSettings": "pyRevit with VSCode: Mettre à jour \"python.autoComplete.extraPaths\"",
+  "revitApiDocs": "pyRevit with VSCode: Ouvrir la documentation de Revit API",
+  "pyRevitDocs": "pyRevit with VSCode: Ouvrir la documentation de pyRevit"
 }
