@@ -12,11 +12,13 @@
     "name": "Baptiste LECHAT",
     "url": "https://github.com/baptistelechat"
   },
+  "publisher": "baptistelechat",
   "engines": {
     "vscode": "^1.88.0"
   },
   "categories": [
     "Other",
+    "Snippets",
     "Extension Packs"
   ],
   "activationEvents": [
@@ -41,6 +43,16 @@
       {
         "command": "pyrevit-with-vscode.pythonSettings",
         "title": "%pythonSettings%"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "python",
+        "path": "./src/snippets/pyrevit-min.code-snippets"
+      },
+      {
+        "language": "python",
+        "path": "./src/snippets/pyrevit-full.code-snippets"
       }
     ]
   },

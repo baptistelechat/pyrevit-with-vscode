@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import pyRevitLib from "./lib/commands/pyrevitLib";
+import pyRevitLib from "./lib/commands/pyRevitLib";
 import pythonExtension from "./lib/commands/pythonExtension";
 import pythonSettings from "./lib/commands/pythonSettings";
 import revitApiStubs from "./lib/commands/revitApiStubs";
@@ -14,14 +14,14 @@ export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(revitApiStubs);
     context.subscriptions.push(pyRevitLib);
     context.subscriptions.push(pythonSettings);
-    
+
     // Display information message when extension is activated
     vscode.commands.executeCommand(
       "pyrevit-with-vscode.installPythonExtension"
     );
     vscode.commands.executeCommand("pyrevit-with-vscode.revitApiStubs");
     vscode.commands.executeCommand("pyrevit-with-vscode.pyRevitLib");
-    
+
     // Read python extension settings
     const config = vscode.workspace.getConfiguration("python");
     const extraPaths = config.get<string[]>("analysis.extraPaths");
