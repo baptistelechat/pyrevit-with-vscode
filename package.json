@@ -29,28 +29,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "pyrevit-with-vscode.pythonExtension",
-        "title": "%pythonExtension%"
+        "command": "pyrevit-with-vscode.setup",
+        "title": "%setup%"
       },
       {
-        "command": "pyrevit-with-vscode.revitApiStubs",
-        "title": "%revitApiStubs%"
-      },
-      {
-        "command": "pyrevit-with-vscode.pyRevitLib",
-        "title": "%pyRevitLib%"
-      },
-      {
-        "command": "pyrevit-with-vscode.vscSettings",
-        "title": "%vscSettings%"
-      },
-      {
-        "command": "pyrevit-with-vscode.revitApiDocs",
-        "title": "%revitApiDocs%"
-      },
-      {
-        "command": "pyrevit-with-vscode.pyRevitDocs",
-        "title": "%pyRevitDocs%"
+        "command": "pyrevit-with-vscode.docs",
+        "title": "%docs%"
       }
     ],
     "snippets": [

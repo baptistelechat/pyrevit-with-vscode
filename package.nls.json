@@ -1,8 +1,4 @@
 {
-  "pythonExtension": "pyRevit with VSCode: Install Python extension",
-  "revitApiStubs": "pyRevit with VSCode: Install Revit API Stubs",
-  "pyRevitLib": "pyRevit with VSCode: Install pyRevit",
-  "vscSettings": "pyRevit with VSCode: Update \"settings.json\"",
-  "revitApiDocs": "pyRevit with VSCode: Open Revit API Docs",
-  "pyRevitDocs": "pyRevit with VSCode: Open pyRevit Docs"
+  "setup": "🛠️ pyRevit with VSCode: Setup",
+  "docs": "📚 pyRevit with VSCode: Documentation"
 }
