@@ -35,6 +35,10 @@
       {
         "command": "pyrevit-with-vscode.docs",
         "title": "%docs%"
+      },
+      {
+        "command": "pyrevit-with-vscode.components",
+        "title": "%components%"
       }
     ],
     "snippets": [

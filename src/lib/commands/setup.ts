@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
 import checkOs from "../utils/checkOs";
-import checkPyRevitLib from "../utils/checkPyRevitLib";
-import checkPythonExtension from "../utils/checkPythonExtension";
-import checkRevitApiStubs from "../utils/checkRevitApiStubs";
-import updateVscSettings from "../utils/updateVscSettings";
+import checkPyRevitLib from "../utils/setup/checkPyRevitLib";
+import checkPythonExtension from "../utils/setup/checkPythonExtension";
+import checkRevitApiStubs from "../utils/setup/checkRevitApiStubs";
+import updateVscSettings from "../utils/setup/updateVscSettings";
 
 const setup = vscode.commands.registerCommand(
   "pyrevit-with-vscode.setup",

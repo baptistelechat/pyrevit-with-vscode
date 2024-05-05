@@ -1,7 +1,7 @@
 import * as path from "path";
 import * as vscode from "vscode";
-import pyRevitMasterPath from "../constants/pyRevitMasterPath";
-import revitApiStubsPath from "../constants/revitApiStubsPath";
+import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
+import revitApiStubsPath from "../../constants/revitApiStubsPath";
 
 const updateVscSettings = async () => {
   // Check "python.autoComplete.extraPaths" in setting.json

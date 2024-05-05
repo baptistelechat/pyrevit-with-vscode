@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import getWebviewContent from "./getWebviewContent";
+import getWebviewContent from "../getWebviewContent";
 
 const openRevitApiDocs = (context: vscode.ExtensionContext) => {
   // Create and show a new webview

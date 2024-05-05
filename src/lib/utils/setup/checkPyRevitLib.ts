@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as vscode from "vscode";
-import pyRevitMasterPath from "../constants/pyRevitMasterPath";
-import pyRevitPath from "../constants/pyRevitPath";
+import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
+import pyRevitPath from "../../constants/pyRevitPath";
 
 const checkPyRevitLib = () => {
   // Check if pyRevit is installed

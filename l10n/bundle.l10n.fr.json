@@ -10,8 +10,8 @@
   "📝 Update \"settings.json\"": "📝 Mettre à jour \"settings.json\"",
 
   "📚 Select a documentation": "📚 Sélectionner une documentation",
-  "📕 Revit API Docs": "📕 Revit API Docs",
-  "📕 pyRevit": "📕 pyRevit",
+
+  "🐍 Select a component to create": "🐍 Sélectionner un composant à créer",
 
   "pyRevit-with-vscode only supports Windows operating system.": "pyRevit-with-vscode n'est compatible qu'avec le système d'exploitation Windows",
 

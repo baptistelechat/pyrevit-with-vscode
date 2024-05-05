@@ -1,15 +1,16 @@
 import * as fs from "fs";
 import * as vscode from "vscode";
+import components from "./lib/commands/components";
 import docs from "./lib/commands/docs";
 import setup from "./lib/commands/setup";
 import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
 import pyRevitPath from "./lib/constants/pyRevitPath";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
-import checkPyRevitLib from "./lib/utils/checkPyRevitLib";
-import checkPythonExtension from "./lib/utils/checkPythonExtension";
-import checkRevitApiStubs from "./lib/utils/checkRevitApiStubs";
-import updateVscSettings from "./lib/utils/updateVscSettings";
+import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
+import checkPythonExtension from "./lib/utils/setup/checkPythonExtension";
+import checkRevitApiStubs from "./lib/utils/setup/checkRevitApiStubs";
+import updateVscSettings from "./lib/utils/setup/updateVscSettings";
 
 export function activate(context: vscode.ExtensionContext) {
   const windowsOs = checkOs();
@@ -17,6 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
   // Add commands to extension context
   context.subscriptions.push(setup);
   context.subscriptions.push(docs(context));
+  context.subscriptions.push(components);
 
   if (windowsOs) {
     // Check if the Python extension is installed

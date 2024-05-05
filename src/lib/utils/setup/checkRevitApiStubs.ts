@@ -1,12 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
-import revitApiStubsPath from "../constants/revitApiStubsPath";
+import revitApiStubsPath from "../../constants/revitApiStubsPath";
 
 const checkRevitApiStubs = () => {
   // Check if Revit API Stubs are installed
   const sourcePath = path.join(
     __dirname,
+    "..",
     "..",
     "..",
     "..",
