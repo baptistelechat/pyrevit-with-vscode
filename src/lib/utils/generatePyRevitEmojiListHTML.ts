@@ -70,34 +70,38 @@ const generatePyRevitEmojiListHTML = async (
 
     function filterTable() {
       const input = document.getElementById("search-box");
-      const filter = input.value.toUpperCase();
+      const filter = input.value;
       const table = document.getElementById("emoji-table");
       const rows = Array.from(table.getElementsByTagName("tr"));
 
       rows.map((row) => {
+        row.style.display = "table-row";
+
         const tdName = row.getElementsByTagName("td")[1];
         const tdShorthand = row.getElementsByTagName("td")[2];
         const tdCode = row.getElementsByTagName("td")[3];
 
         if (tdName || tdShorthand || tdCode) {
-          let match = false;
-
-          if (tdName.textContent && tdName.textContent.toUpperCase().indexOf(filter) > -1) {
-            match = true;
+          if (tdName.textContent && tdName.textContent.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+            row.style.display = "table-row"
           }
 
-          if (tdShorthand.textContent && tdShorthand.textContent.toUpperCase().indexOf(filter) > -1) {
-            match = true;
+          else if (tdShorthand.textContent && tdShorthand.textContent.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+            row.style.display = "table-row"
           }
 
-          if (filter.length === 1 && filter.codePointAt(0) !== null) {
-            const code = filter.codePointAt(0).toString(16).padStart(4, '0');
+          else if (filter.length <= 2) {
+            const code = filter.codePointAt(0).toString(16);
             if (tdCode.textContent && tdCode.textContent.toUpperCase() === code.toUpperCase()) {
-              match = true;
+              row.style.display = "table-row"
+            } else {
+              row.style.display = "none"
             }
           }
 
-          row.style.display = match ? "" : "none";
+          else {
+            row.style.display = "none"
+          }
         }
       });
     }
