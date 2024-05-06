@@ -54,21 +54,20 @@ async function createExtension() {
             const iconPath = path.join(buttonPath, "icon.png");
 
             const scriptContent = `# -*- coding: utf-8 -*-
-__title__ = "Hello World"
+__title__ = "${buttonName}"
 __author__ = "John Doe"
-__doc__ = """This is Hello Word Button.
+__doc__ = """This is ${buttonName} Button.
 Click on it see what happens..."""
 
-
 if __name__ == '__main__':
-    print("Hello World!")
-    
-# --------------------------------------------------    
+    print("${buttonName} clicked!")
+
+# --------------------------------------------------
 # 💡 pyRevit with VSCode: Use pyrvt ou pyrvtmin snippet`;
 
             fs.writeFileSync(scriptPath, scriptContent);
 
-            const sourcePath = path.join(
+            const defaultIconPath = path.join(
               __dirname,
               "..",
               "..",
@@ -80,7 +79,7 @@ if __name__ == '__main__':
               "img",
               "pyRevitLogo_black.png"
             );
-            fs.copyFileSync(sourcePath, iconPath);
+            fs.copyFileSync(defaultIconPath, iconPath);
 
             vscode.window.showInformationMessage(
               vscode.l10n.t("Extension created successfully")
