@@ -8,6 +8,9 @@
   "📝 Enter the name of the panel": "📝 Entrez le nom du groupe",
   "📝 Enter the name of the button": "📝 Entrer le nom du bouton",
 
+  "📁 Tab":"📁 Onglet",
+  "📦 Panel":"📦 Groupe",
+
   "No workspace folder found.": "Aucun dossier de l'espace de travail n'a été trouvé.",
 
   "No extension found.": "Aucune extension n'a été trouvée.",
@@ -25,6 +28,7 @@
   "Extension created successfully": "Extension créée avec succès",
   "PushButton created successfully": "PushButton créé avec succès",
   "Panel created successfully": "Groupe créé avec succès",
+  "Tab created successfully": "Onglet créé avec succès",
 
   "🛠️ Select a setup option": "🛠️ Sélectionner une option de configuration",
   "🧩 Install Python extension": "🧩 Installer l'extension Python",

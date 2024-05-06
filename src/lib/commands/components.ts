@@ -3,13 +3,19 @@ import checkOs from "../utils/checkOs";
 import createExtension from "../utils/components/createExtension";
 import createPanel from "../utils/components/createPanel";
 import createPushButton from "../utils/components/createPushButton";
+import createTab from "../utils/components/createTab";
 
 const components = vscode.commands.registerCommand(
   "pyrevit-with-vscode.components",
   async () => {
     const windowsOs = checkOs();
     if (windowsOs) {
-      const options = ["💼 Extension", "📦 Panel", "✨ PushButton"];
+      const options = [
+        "💼 Extension",
+        vscode.l10n.t("📁 Tab"),
+        vscode.l10n.t("📦 Panel"),
+        "✨ PushButton",
+      ];
 
       const selectedOption = await vscode.window.showQuickPick(options, {
         placeHolder: vscode.l10n.t("🐍 Select a component to create"),
@@ -20,7 +26,10 @@ const components = vscode.commands.registerCommand(
           case "💼 Extension":
             createExtension();
             break;
-          case "📦 Panel":
+          case vscode.l10n.t("📁 Tab"):
+            createTab();
+            break;
+          case vscode.l10n.t("📦 Panel"):
             createPanel();
             break;
           case "✨ PushButton":
