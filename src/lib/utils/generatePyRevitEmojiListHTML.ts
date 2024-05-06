@@ -24,6 +24,19 @@ const generatePyRevitEmojiListHTML = async (
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>pyRevit Emojis List</title>
   <style>
+    input[type="text"] {
+      padding: 8px;
+      border: 2px solid #333333;
+      border-radius: 4px;
+      outline: none;
+      width: 50%;
+      box-sizing: border-box;
+      margin-top: 16px;
+      margin-bottom: 16px;
+    }
+    input[type="text"]:focus {
+      border-color: #666666;
+    }
     table {
       width: 100%;
     }
@@ -37,24 +50,62 @@ const generatePyRevitEmojiListHTML = async (
     tr:nth-child(even) {
       background-color: #333333;
     }
-    tr:hover {
+    tr:hover td {
       background-color: #666666;
       color: #1a1a1a;
-      cursor: pointer
+      cursor: pointer;
     }
     .copied {
-      background-color: #4caf50;
+      background-color: #4caf50 !important;
       color: white;
     }
   </style>
   <script>
-    function copyShorthandToClipboard(shorthand) {
-      navigator.clipboard.writeText(shorthand);
+    function copyShorthandToClipboard(elementId) {
+      navigator.clipboard.writeText(":"+elementId+":");
+      const element = document.getElementById(elementId);
+      element.classList.add('copied');
+      setTimeout(() => element.classList.remove('copied'), 3000);
+    }
+
+    function filterTable() {
+      const input = document.getElementById("search-box");
+      const filter = input.value.toUpperCase();
+      const table = document.getElementById("emoji-table");
+      const rows = Array.from(table.getElementsByTagName("tr"));
+
+      rows.map((row) => {
+        const tdName = row.getElementsByTagName("td")[1];
+        const tdShorthand = row.getElementsByTagName("td")[2];
+        const tdCode = row.getElementsByTagName("td")[3];
+
+        if (tdName || tdShorthand || tdCode) {
+          let match = false;
+
+          if (tdName.textContent && tdName.textContent.toUpperCase().indexOf(filter) > -1) {
+            match = true;
+          }
+
+          if (tdShorthand.textContent && tdShorthand.textContent.toUpperCase().indexOf(filter) > -1) {
+            match = true;
+          }
+
+          if (filter.length === 1 && filter.codePointAt(0) !== null) {
+            const code = filter.codePointAt(0).toString(16).padStart(4, '0');
+            if (tdCode.textContent && tdCode.textContent.toUpperCase() === code.toUpperCase()) {
+              match = true;
+            }
+          }
+
+          row.style.display = match ? "" : "none";
+        }
+      });
     }
   </script>
 </head>
 <body>
-  <table>
+  <input type="text" id="search-box" placeholder="Rechercher..." oninput="filterTable()">
+  <table id="emoji-table">
     <thead>
       <tr>
         <th>Icon</th>
@@ -76,7 +127,7 @@ const generatePyRevitEmojiListHTML = async (
       const iconId = `${icon.name.toLowerCase()}`;
 
       return `
-      <tr title=":${iconId}:" onclick="copyShorthandToClipboard(':${iconId}:'); document.getElementById('${iconId}').classList.add('copied'); setTimeout(() => document.getElementById('${iconId}').classList.remove('copied'), 3000)">
+      <tr title=":${iconId}:" onclick="copyShorthandToClipboard('${iconId}')">
         <td><img src="data:image/png;base64,${iconBase64}" alt="${iconId}" width="24px" height="24px"></td>
         <td>${icon.name}</td>
         <td id="${iconId}">:${iconId}:</td>
