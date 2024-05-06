@@ -1,15 +1,13 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
+import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import getDirectories from "./utils/getDirectories";
+import selectExtension from "./utils/selectExtension";
+import selectPanel from "./utils/selectPanel";
+import selectTab from "./utils/selectTab";
 
-function getDirectories(srcpath: string) {
-  return fs
-    .readdirSync(srcpath)
-    .filter((file) => fs.statSync(path.join(srcpath, file)).isDirectory())
-    .map((file) => path.join(srcpath, file));
-}
-
-async function createPushButton() {
+const createPushButton = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
     vscode.window.showErrorMessage(vscode.l10n.t("No workspace folder found."));
@@ -25,12 +23,7 @@ async function createPushButton() {
     return;
   }
 
-  const selectedExtension = await vscode.window.showQuickPick(
-    extensionDirectories.map((dir) => path.basename(dir, ".extension")),
-    {
-      placeHolder: vscode.l10n.t("💼 Select an extension"),
-    }
-  );
+  const selectedExtension = await selectExtension(extensionDirectories);
 
   if (!selectedExtension) {
     vscode.window.showInformationMessage(
@@ -53,12 +46,7 @@ async function createPushButton() {
       return;
     }
 
-    const selectedTab = await vscode.window.showQuickPick(
-      tabDirectories.map((dir) => path.basename(dir, ".tab")),
-      {
-        placeHolder: vscode.l10n.t("📁 Select a tab"),
-      }
-    );
+    const selectedTab = await selectTab(tabDirectories);
 
     if (!selectedTab) {
       vscode.window.showInformationMessage(vscode.l10n.t("No tab selected."));
@@ -79,12 +67,7 @@ async function createPushButton() {
         return;
       }
 
-      const selectedPanel = await vscode.window.showQuickPick(
-        panelDirectories.map((dir) => path.basename(dir, ".panel")),
-        {
-          placeHolder: vscode.l10n.t("📦 Select a panel"),
-        }
-      );
+      const selectedPanel = await selectPanel(panelDirectories);
 
       if (!selectedPanel) {
         vscode.window.showInformationMessage(
@@ -115,19 +98,7 @@ async function createPushButton() {
           const scriptPath = path.join(buttonPath, "script.py");
           const iconPath = path.join(buttonPath, "icon.png");
 
-          const scriptContent = `# -*- coding: utf-8 -*-
-__title__ = "${buttonName}"
-__author__ = "John Doe"
-__doc__ = """This is ${buttonName} Button.
-Click on it see what happens..."""
-
-if __name__ == '__main__':
-    print("${buttonName} clicked!")
-
-# --------------------------------------------------
-# 💡 pyRevit with VSCode: Use pyrvt ou pyrvtmin snippet`;
-
-          fs.writeFileSync(scriptPath, scriptContent);
+          fs.writeFileSync(scriptPath, defaultPyRevitScript(buttonName));
 
           const defaultIconPath = path.join(
             __dirname,
@@ -150,6 +121,6 @@ if __name__ == '__main__':
       }
     }
   }
-}
+};
 
 export default createPushButton;
