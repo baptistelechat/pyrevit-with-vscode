@@ -7,7 +7,10 @@ const selectExtension = async (
   extensionDirectories: string[]
 ): Promise<string | undefined> => {
   const selectedExtension = await vscode.window.showQuickPick(
-    extensionDirectories.map((dir) => path.basename(dir, ".extension")),
+    [
+      ...extensionDirectories.map((dir) => path.basename(dir, ".extension")),
+      "+ New Value",
+    ],
     {
       placeHolder: t("💼 Select an extension"),
     }

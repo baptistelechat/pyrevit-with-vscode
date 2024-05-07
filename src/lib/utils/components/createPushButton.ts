@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import createExtension from "./createExtension";
 import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
@@ -33,6 +34,11 @@ const createPushButton = async () => {
     return;
   }
 
+  if (selectedExtension === "+ New Value") {
+    createExtension();
+    return;
+  }
+
   const selectedExtensionPath = extensionDirectories.find(
     (dir) => path.basename(dir, ".extension") === selectedExtension
   );
@@ -54,30 +60,61 @@ const createPushButton = async () => {
       return;
     }
 
-    const selectedTabPath = tabDirectories.find(
-      (dir) => path.basename(dir, ".tab") === selectedTab
-    );
+    let selectedTabPath: string | undefined;
+
+    if (selectedTab === "+ New Value") {
+      const tabName = await vscode.window.showInputBox({
+        prompt: t("📝 Enter the name of the tab"),
+      });
+      const tabPath = path.join(selectedExtensionPath, `${tabName}.tab`);
+      createDirectory(tabPath);
+      selectedTabPath = tabPath;
+    } else {
+      selectedTabPath = tabDirectories.find(
+        (dir) => path.basename(dir, ".tab") === selectedTab
+      );
+    }
 
     if (typeof selectedTabPath === "string") {
-      const panelDirectories = getDirectories(selectedTabPath).filter((dir) =>
-        dir.endsWith(".panel")
-      );
+      let selectedPanelPath: string | undefined;
 
-      if (panelDirectories.length === 0) {
-        vscode.window.showErrorMessage(t("No panel found."));
-        return;
+      if (selectedTab === "+ New Value") {
+        const panelName = await vscode.window.showInputBox({
+          prompt: t("📝 Enter the name of the panel"),
+        });
+        const panelPath = path.join(selectedTabPath, `${panelName}.panel`);
+        createDirectory(panelPath);
+        selectedPanelPath = panelPath;
+      } else {
+        const panelDirectories = getDirectories(selectedTabPath).filter((dir) =>
+          dir.endsWith(".panel")
+        );
+
+        if (panelDirectories.length === 0) {
+          vscode.window.showErrorMessage(t("No panel found."));
+          return;
+        }
+
+        const selectedPanel = await selectPanel(panelDirectories);
+
+        if (!selectedPanel) {
+          vscode.window.showInformationMessage(t("No panel selected."));
+          return;
+        }
+
+        if (selectedPanel === "+ New Value") {
+          const panelName = await vscode.window.showInputBox({
+            prompt: t("📝 Enter the name of the panel"),
+          });
+          const panelPath = path.join(selectedTabPath, `${panelName}.panel`);
+          createDirectory(panelPath);
+          selectedPanelPath = panelPath;
+        } else {
+          selectedPanelPath = panelDirectories.find(
+            (dir) => path.basename(dir, ".panel") === selectedPanel
+          );
+        }
       }
-
-      const selectedPanel = await selectPanel(panelDirectories);
-
-      if (!selectedPanel) {
-        vscode.window.showInformationMessage(t("No panel selected."));
-        return;
-      }
-
-      const selectedPanelPath = panelDirectories.find(
-        (dir) => path.basename(dir, ".panel") === selectedPanel
-      );
 
       if (typeof selectedPanelPath === "string") {
         const buttonName = await vscode.window.showInputBox({

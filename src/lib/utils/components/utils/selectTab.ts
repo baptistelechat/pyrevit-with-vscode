@@ -7,7 +7,7 @@ const selectTab = async (
   tabDirectories: string[]
 ): Promise<string | undefined> => {
   const selectedTab = await vscode.window.showQuickPick(
-    tabDirectories.map((dir) => path.basename(dir, ".tab")),
+    [...tabDirectories.map((dir) => path.basename(dir, ".tab")), "+ New Value"],
     {
       placeHolder: t("📁 Select a tab"),
     }

@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import createExtension from "./createExtension";
 import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
@@ -32,6 +33,11 @@ const createPanel = async () => {
     return;
   }
 
+  if (selectedExtension === "+ New Value") {
+    createExtension();
+    return;
+  }
+
   const selectedExtensionPath = extensionDirectories.find(
     (dir) => path.basename(dir, ".extension") === selectedExtension
   );
@@ -53,9 +59,20 @@ const createPanel = async () => {
       return;
     }
 
-    const selectedTabPath = tabDirectories.find(
-      (dir) => path.basename(dir, ".tab") === selectedTab
-    );
+    let selectedTabPath: string | undefined;
+
+    if (selectedTab === "+ New Value") {
+      const tabName = await vscode.window.showInputBox({
+        prompt: t("📝 Enter the name of the tab"),
+      });
+      const tabPath = path.join(selectedExtensionPath, `${tabName}.tab`);
+      createDirectory(tabPath);
+      selectedTabPath = tabPath;
+    } else {
+      selectedTabPath = tabDirectories.find(
+        (dir) => path.basename(dir, ".tab") === selectedTab
+      );
+    }
 
     if (typeof selectedTabPath === "string") {
       const panelName = await vscode.window.showInputBox({
@@ -63,7 +80,10 @@ const createPanel = async () => {
       });
 
       if (panelName) {
-        const panelPath = path.join(selectedTabPath, `${panelName}.panel`);
+        const panelPath = path.join(
+          selectedTabPath as string,
+          `${panelName}.panel`
+        );
         const buttonPath = path.join(panelPath, "Hello World.pushbutton");
 
         createDirectory(panelPath);

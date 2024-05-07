@@ -7,7 +7,10 @@ const selectPanel = async (
   panelDirectories: string[]
 ): Promise<string | undefined> => {
   const selectedPanel = await vscode.window.showQuickPick(
-    panelDirectories.map((dir) => path.basename(dir, ".panel")),
+    [
+      ...panelDirectories.map((dir) => path.basename(dir, ".panel")),
+      "+ New Value",
+    ],
     {
       placeHolder: t("📦 Select a panel"),
     }

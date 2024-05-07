@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import createExtension from "./createExtension";
 import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
@@ -28,6 +29,11 @@ const createTab = async () => {
 
   if (!selectedExtension) {
     vscode.window.showInformationMessage(t("No extension selected."));
+    return;
+  }
+
+  if (selectedExtension === "+ New Value") {
+    createExtension();
     return;
   }
 
