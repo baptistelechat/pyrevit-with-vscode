@@ -2,15 +2,18 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 
+const { t } = vscode.l10n;
+
 const createPushButton = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
-    vscode.window.showErrorMessage(vscode.l10n.t("No workspace folder found."));
+    vscode.window.showErrorMessage(t("No workspace folder found."));
     return;
   }
 
@@ -19,16 +22,14 @@ const createPushButton = async () => {
   );
 
   if (extensionDirectories.length === 0) {
-    vscode.window.showErrorMessage(vscode.l10n.t("No extension found."));
+    vscode.window.showErrorMessage(t("No extension found."));
     return;
   }
 
   const selectedExtension = await selectExtension(extensionDirectories);
 
   if (!selectedExtension) {
-    vscode.window.showInformationMessage(
-      vscode.l10n.t("No extension selected.")
-    );
+    vscode.window.showInformationMessage(t("No extension selected."));
     return;
   }
 
@@ -42,14 +43,14 @@ const createPushButton = async () => {
     );
 
     if (tabDirectories.length === 0) {
-      vscode.window.showErrorMessage(vscode.l10n.t("No tab found."));
+      vscode.window.showErrorMessage(t("No tab found."));
       return;
     }
 
     const selectedTab = await selectTab(tabDirectories);
 
     if (!selectedTab) {
-      vscode.window.showInformationMessage(vscode.l10n.t("No tab selected."));
+      vscode.window.showInformationMessage(t("No tab selected."));
       return;
     }
 
@@ -63,16 +64,14 @@ const createPushButton = async () => {
       );
 
       if (panelDirectories.length === 0) {
-        vscode.window.showErrorMessage(vscode.l10n.t("No panel found."));
+        vscode.window.showErrorMessage(t("No panel found."));
         return;
       }
 
       const selectedPanel = await selectPanel(panelDirectories);
 
       if (!selectedPanel) {
-        vscode.window.showInformationMessage(
-          vscode.l10n.t("No panel selected.")
-        );
+        vscode.window.showInformationMessage(t("No panel selected."));
         return;
       }
 
@@ -82,7 +81,7 @@ const createPushButton = async () => {
 
       if (typeof selectedPanelPath === "string") {
         const buttonName = await vscode.window.showInputBox({
-          prompt: vscode.l10n.t("📝 Enter the name of the button"),
+          prompt: t("📝 Enter the name of the button"),
         });
 
         if (buttonName) {
@@ -91,9 +90,7 @@ const createPushButton = async () => {
             `${buttonName}.pushbutton`
           );
 
-          if (!fs.existsSync(buttonPath)) {
-            fs.mkdirSync(buttonPath);
-          }
+          createDirectory(buttonPath);
 
           const scriptPath = path.join(buttonPath, "script.py");
           const iconPath = path.join(buttonPath, "icon.png");
@@ -115,7 +112,7 @@ const createPushButton = async () => {
           fs.copyFileSync(defaultIconPath, iconPath);
 
           vscode.window.showInformationMessage(
-            vscode.l10n.t("PushButton created successfully")
+            t("PushButton created successfully")
           );
         }
       }

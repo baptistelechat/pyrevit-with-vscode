@@ -3,6 +3,8 @@ import * as vscode from "vscode";
 import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
 import revitApiStubsPath from "../../constants/revitApiStubsPath";
 
+const { t } = vscode.l10n;
+
 const updateVscSettings = async () => {
   // Check "python.autoComplete.extraPaths" in setting.json
   const config = vscode.workspace.getConfiguration("python");
@@ -23,7 +25,7 @@ const updateVscSettings = async () => {
 
   const selectedVersions = await vscode.window.showQuickPick(items, {
     canPickMany: true,
-    placeHolder: vscode.l10n.t("Select the Revit API versions"),
+    placeHolder: t("Select the Revit API versions"),
   });
 
   if (selectedVersions) {
@@ -43,12 +45,10 @@ const updateVscSettings = async () => {
     );
 
     vscode.window.showInformationMessage(
-      vscode.l10n.t('"settings.json" has been updated.')
+      t('"settings.json" has been updated.')
     );
   } else {
-    vscode.window.showErrorMessage(
-      vscode.l10n.t("Revit API versions selection aborted")
-    );
+    vscode.window.showErrorMessage(t("Revit API versions selection aborted"));
   }
 };
 

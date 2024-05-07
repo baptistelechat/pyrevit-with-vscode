@@ -2,13 +2,16 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
+
+const { t } = vscode.l10n;
 
 const createTab = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
-    vscode.window.showErrorMessage(vscode.l10n.t("No workspace folder found."));
+    vscode.window.showErrorMessage(t("No workspace folder found."));
     return;
   }
 
@@ -17,16 +20,14 @@ const createTab = async () => {
   );
 
   if (extensionDirectories.length === 0) {
-    vscode.window.showErrorMessage(vscode.l10n.t("No extension found."));
+    vscode.window.showErrorMessage(t("No extension found."));
     return;
   }
 
   const selectedExtension = await selectExtension(extensionDirectories);
 
   if (!selectedExtension) {
-    vscode.window.showInformationMessage(
-      vscode.l10n.t("No extension selected.")
-    );
+    vscode.window.showInformationMessage(t("No extension selected."));
     return;
   }
 
@@ -36,27 +37,17 @@ const createTab = async () => {
 
   if (typeof selectedExtensionPath === "string") {
     const tabName = await vscode.window.showInputBox({
-      prompt: vscode.l10n.t("📝 Enter the name of the tab"),
+      prompt: t("📝 Enter the name of the tab"),
     });
 
     if (tabName) {
       const tabPath = path.join(selectedExtensionPath, `${tabName}.tab`);
-
-      if (!fs.existsSync(tabPath)) {
-        fs.mkdirSync(tabPath);
-      }
-
       const panelPath = path.join(tabPath, "New Panel.panel");
-
-      if (!fs.existsSync(panelPath)) {
-        fs.mkdirSync(panelPath);
-      }
-
       const buttonPath = path.join(panelPath, "Hello World.pushbutton");
 
-      if (!fs.existsSync(buttonPath)) {
-        fs.mkdirSync(buttonPath);
-      }
+      createDirectory(tabPath);
+      createDirectory(panelPath);
+      createDirectory(buttonPath);
 
       const scriptPath = path.join(buttonPath, "script.py");
       const iconPath = path.join(buttonPath, "icon.png");
@@ -77,9 +68,7 @@ const createTab = async () => {
       );
       fs.copyFileSync(defaultIconPath, iconPath);
 
-      vscode.window.showInformationMessage(
-        vscode.l10n.t("Tab created successfully")
-      );
+      vscode.window.showInformationMessage(t("Tab created successfully"));
     }
   }
 };

@@ -1,13 +1,15 @@
 import * as vscode from "vscode";
 import getDirectories from "./getDirectories";
 
+const { t } = vscode.l10n;
+
 const getTabDirectories = (extensionPath: string) => {
   const tabDirectories = getDirectories(extensionPath).filter((dir) =>
     dir.endsWith(".tab")
   );
 
   if (tabDirectories.length === 0) {
-    vscode.window.showErrorMessage(vscode.l10n.t("No tab found."));
+    vscode.window.showErrorMessage(t("No tab found."));
     return [];
   }
 

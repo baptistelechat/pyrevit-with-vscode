@@ -3,6 +3,8 @@ import checkOs from "../utils/checkOs";
 import openPyRevitDocs from "../utils/docs/openPyRevitDocs";
 import openPyRevitEmojisList from "../utils/docs/openPyRevitEmojisList";
 
+const { t } = vscode.l10n;
+
 const docs = (context: vscode.ExtensionContext) =>
   vscode.commands.registerCommand("pyrevit-with-vscode.docs", async () => {
     const windowsOs = checkOs();
@@ -10,7 +12,7 @@ const docs = (context: vscode.ExtensionContext) =>
       const options = ["📕 Revit API Docs", "📕 pyRevit", "🎨 pyRevit Emojis"];
 
       const selectedOption = await vscode.window.showQuickPick(options, {
-        placeHolder: vscode.l10n.t("📚 Select a documentation"),
+        placeHolder: t("📚 Select a documentation"),
       });
 
       if (selectedOption) {

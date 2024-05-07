@@ -5,6 +5,8 @@ import createPanel from "../utils/components/createPanel";
 import createPushButton from "../utils/components/createPushButton";
 import createTab from "../utils/components/createTab";
 
+const { t } = vscode.l10n;
+
 const components = vscode.commands.registerCommand(
   "pyrevit-with-vscode.components",
   async () => {
@@ -12,13 +14,13 @@ const components = vscode.commands.registerCommand(
     if (windowsOs) {
       const options = [
         "💼 Extension",
-        vscode.l10n.t("📁 Tab"),
-        vscode.l10n.t("📦 Panel"),
+        t("📁 Tab"),
+        t("📦 Panel"),
         "✨ PushButton",
       ];
 
       const selectedOption = await vscode.window.showQuickPick(options, {
-        placeHolder: vscode.l10n.t("🐍 Select a component to create"),
+        placeHolder: t("🐍 Select a component to create"),
       });
 
       if (selectedOption) {
@@ -26,10 +28,10 @@ const components = vscode.commands.registerCommand(
           case "💼 Extension":
             createExtension();
             break;
-          case vscode.l10n.t("📁 Tab"):
+          case t("📁 Tab"):
             createTab();
             break;
-          case vscode.l10n.t("📦 Panel"):
+          case t("📦 Panel"):
             createPanel();
             break;
           case "✨ PushButton":

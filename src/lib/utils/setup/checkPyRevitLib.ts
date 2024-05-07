@@ -3,18 +3,20 @@ import * as vscode from "vscode";
 import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
 import pyRevitPath from "../../constants/pyRevitPath";
 
+const { t } = vscode.l10n;
+
 const checkPyRevitLib = () => {
   // Check if pyRevit is installed
   if (!fs.existsSync(pyRevitPath) || !fs.existsSync(pyRevitMasterPath)) {
     vscode.window
       .showErrorMessage(
-        vscode.l10n.t(
+        t(
           "pyRevit is required to use pyRevit-with-vscode. Do you want to download it now?"
         ),
-        vscode.l10n.t("Download")
+        t("Download")
       )
       .then((action) => {
-        if (action === vscode.l10n.t("Download")) {
+        if (action === t("Download")) {
           vscode.env.openExternal(
             vscode.Uri.parse("https://github.com/pyrevitlabs/pyRevit/releases")
           );
@@ -22,7 +24,7 @@ const checkPyRevitLib = () => {
       });
   } else {
     vscode.window.showInformationMessage(
-      vscode.l10n.t("pyRevit is already installed in %APPDATA%.")
+      t("pyRevit is already installed in %APPDATA%.")
     );
   }
 };

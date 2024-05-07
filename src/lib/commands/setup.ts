@@ -5,34 +5,36 @@ import checkPythonExtension from "../utils/setup/checkPythonExtension";
 import checkRevitApiStubs from "../utils/setup/checkRevitApiStubs";
 import updateVscSettings from "../utils/setup/updateVscSettings";
 
+const { t } = vscode.l10n;
+
 const setup = vscode.commands.registerCommand(
   "pyrevit-with-vscode.setup",
   async () => {
     const windowsOs = checkOs();
     if (windowsOs) {
       const options = [
-        vscode.l10n.t("🧩 Install Python extension"),
-        vscode.l10n.t("📕 Install Revit API Stubs"),
-        vscode.l10n.t("📕 Install pyRevit"),
-        vscode.l10n.t('📝 Update "settings.json"'),
+        t("🧩 Install Python extension"),
+        t("📕 Install Revit API Stubs"),
+        t("📕 Install pyRevit"),
+        t('📝 Update "settings.json"'),
       ];
 
       const selectedOption = await vscode.window.showQuickPick(options, {
-        placeHolder: vscode.l10n.t("🛠️ Select a setup option"),
+        placeHolder: t("🛠️ Select a setup option"),
       });
 
       if (selectedOption) {
         switch (selectedOption) {
-          case vscode.l10n.t("🧩 Install Python extension"):
+          case t("🧩 Install Python extension"):
             checkPythonExtension();
             break;
-          case vscode.l10n.t("📕 Install Revit API Stubs"):
+          case t("📕 Install Revit API Stubs"):
             checkRevitApiStubs();
             break;
-          case vscode.l10n.t("📕 Install pyRevit"):
+          case t("📕 Install pyRevit"):
             checkPyRevitLib();
             break;
-          case vscode.l10n.t('📝 Update "settings.json"'):
+          case t('📝 Update "settings.json"'):
             updateVscSettings();
             break;
         }
