@@ -2,18 +2,21 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
+import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
 import selectTab from "./utils/selectTab";
+import createFileWithContent from "./utils/createFileWithContent";
 
 const { t } = vscode.l10n;
 
 const createPanel = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
-    vscode.window.showErrorMessage(t("No workspace folder found."));
+    showErrorMessage("No workspace folder found.");
     return;
   }
 
@@ -22,14 +25,14 @@ const createPanel = async () => {
   );
 
   if (extensionDirectories.length === 0) {
-    vscode.window.showErrorMessage(t("No extension found."));
+    showErrorMessage("No extension found.");
     return;
   }
 
   const selectedExtension = await selectExtension(extensionDirectories);
 
   if (!selectedExtension) {
-    vscode.window.showInformationMessage(t("No extension selected."));
+    showInformationMessage("No extension selected.");
     return;
   }
 
@@ -48,14 +51,14 @@ const createPanel = async () => {
     );
 
     if (tabDirectories.length === 0) {
-      vscode.window.showErrorMessage(t("No tab found."));
+      showErrorMessage("No tab found.");
       return;
     }
 
     const selectedTab = await selectTab(tabDirectories);
 
     if (!selectedTab) {
-      vscode.window.showInformationMessage(t("No tab selected."));
+      showInformationMessage("No tab selected.");
       return;
     }
 
@@ -92,7 +95,7 @@ const createPanel = async () => {
         const scriptPath = path.join(buttonPath, "script.py");
         const iconPath = path.join(buttonPath, "icon.png");
 
-        fs.writeFileSync(scriptPath, defaultPyRevitScript("Hello World"));
+        createFileWithContent(scriptPath, defaultPyRevitScript("Hello World"));
 
         const defaultIconPath = path.join(
           __dirname,
@@ -106,9 +109,9 @@ const createPanel = async () => {
           "img",
           "pyRevitLogo_black.png"
         );
-        fs.copyFileSync(defaultIconPath, iconPath);
+        copyFile(defaultIconPath, iconPath);
 
-        vscode.window.showInformationMessage(t("Panel created successfully"));
+        showInformationMessage("Panel created successfully");
       }
     }
   }

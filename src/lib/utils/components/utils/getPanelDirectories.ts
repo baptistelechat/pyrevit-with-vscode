@@ -1,7 +1,5 @@
-import * as vscode from "vscode";
+import { showErrorMessage } from "../../showMessage";
 import getDirectories from "./getDirectories";
-
-const { t } = vscode.l10n;
 
 const getPanelDirectories = (tabPath: string) => {
   const panelDirectories = getDirectories(tabPath).filter((dir) =>
@@ -9,7 +7,7 @@ const getPanelDirectories = (tabPath: string) => {
   );
 
   if (panelDirectories.length === 0) {
-    vscode.window.showErrorMessage(t("No panel found."));
+    showErrorMessage("No panel found.");
     return [];
   }
 

@@ -2,6 +2,7 @@ import * as path from "path";
 import * as vscode from "vscode";
 import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
 import revitApiStubsPath from "../../constants/revitApiStubsPath";
+import { showErrorMessage, showInformationMessage } from "../showMessage";
 
 const { t } = vscode.l10n;
 
@@ -44,11 +45,9 @@ const updateVscSettings = async () => {
       vscode.ConfigurationTarget.Global
     );
 
-    vscode.window.showInformationMessage(
-      t('"settings.json" has been updated.')
-    );
+    showInformationMessage('"settings.json" has been updated.');
   } else {
-    vscode.window.showErrorMessage(t("Revit API versions selection aborted"));
+    showErrorMessage("Revit API versions selection aborted");
   }
 };
 

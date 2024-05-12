@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { showInformationMessage } from "../showMessage";
 
 const { t } = vscode.l10n;
 
@@ -35,8 +36,8 @@ const checkPythonExtension = () => {
         }
       });
   } else {
-    vscode.window.showInformationMessage(
-      t("The Python extension is already installed and activated.")
+    showInformationMessage(
+      "The Python extension is already installed and activated."
     );
   }
 };

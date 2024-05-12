@@ -2,17 +2,20 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
+import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
+import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
+import createFileWithContent from "./utils/createFileWithContent";
 
 const { t } = vscode.l10n;
 
 const createTab = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
-    vscode.window.showErrorMessage(t("No workspace folder found."));
+    showErrorMessage("No workspace folder found.");
     return;
   }
 
@@ -21,14 +24,14 @@ const createTab = async () => {
   );
 
   if (extensionDirectories.length === 0) {
-    vscode.window.showErrorMessage(t("No extension found."));
+    showErrorMessage("No extension found.");
     return;
   }
 
   const selectedExtension = await selectExtension(extensionDirectories);
 
   if (!selectedExtension) {
-    vscode.window.showInformationMessage(t("No extension selected."));
+    showInformationMessage("No extension selected.");
     return;
   }
 
@@ -58,7 +61,7 @@ const createTab = async () => {
       const scriptPath = path.join(buttonPath, "script.py");
       const iconPath = path.join(buttonPath, "icon.png");
 
-      fs.writeFileSync(scriptPath, defaultPyRevitScript("Hello World"));
+      createFileWithContent(scriptPath, defaultPyRevitScript("Hello World"));
 
       const defaultIconPath = path.join(
         __dirname,
@@ -72,9 +75,9 @@ const createTab = async () => {
         "img",
         "pyRevitLogo_black.png"
       );
-      fs.copyFileSync(defaultIconPath, iconPath);
+      copyFile(defaultIconPath, iconPath);
 
-      vscode.window.showInformationMessage(t("Tab created successfully"));
+      showInformationMessage("Tab created successfully");
     }
   }
 };

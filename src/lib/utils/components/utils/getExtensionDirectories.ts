@@ -1,7 +1,5 @@
-import * as vscode from "vscode";
+import { showErrorMessage } from "../../showMessage";
 import getDirectories from "./getDirectories";
-
-const { t } = vscode.l10n;
 
 const getExtensionDirectories = (workspacePath: string) => {
   const extensionDirectories = getDirectories(workspacePath).filter((dir) =>
@@ -9,7 +7,7 @@ const getExtensionDirectories = (workspacePath: string) => {
   );
 
   if (extensionDirectories.length === 0) {
-    vscode.window.showErrorMessage(t("No extension found."));
+    showErrorMessage("No extension found.");
     return [];
   }
 

@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as vscode from "vscode";
 import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
 import pyRevitPath from "../../constants/pyRevitPath";
+import { showInformationMessage } from "../showMessage";
 
 const { t } = vscode.l10n;
 
@@ -23,9 +24,7 @@ const checkPyRevitLib = () => {
         }
       });
   } else {
-    vscode.window.showInformationMessage(
-      t("pyRevit is already installed in %APPDATA%.")
-    );
+    showInformationMessage("pyRevit is already installed in %APPDATA%.");
   }
 };
 

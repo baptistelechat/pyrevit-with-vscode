@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import revitApiStubsPath from "../../constants/revitApiStubsPath";
+import { showInformationMessage } from "../showMessage";
 
 const { t } = vscode.l10n;
 
@@ -31,14 +32,14 @@ const checkRevitApiStubs = () => {
         if (action === t("Download")) {
           fs.mkdirSync(revitApiStubsPath, { recursive: true });
           fs.cpSync(sourcePath, revitApiStubsPath, { recursive: true });
-          vscode.window.showInformationMessage(
-            t("The Revit API Stubs are download and place in %APPDATA%.")
+          showInformationMessage(
+            "The Revit API Stubs are download and place in %APPDATA%."
           );
         }
       });
   } else {
-    vscode.window.showInformationMessage(
-      t("The Revit API Stubs are already installed in %APPDATA%.")
+    showInformationMessage(
+      "The Revit API Stubs are already installed in %APPDATA%."
     );
   }
 };
