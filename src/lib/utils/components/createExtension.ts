@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
@@ -47,10 +46,9 @@ async function createExtension() {
             createDirectory(buttonPath);
 
             const scriptPath = path.join(buttonPath, "script.py");
-            const iconPath = path.join(buttonPath, "icon.png");
-
             createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
+            const iconPath = path.join(buttonPath, "icon.png");
             const defaultIconPath = path.join(
               __dirname,
               "..",
@@ -64,6 +62,21 @@ async function createExtension() {
               "pyRevitLogo_black.png"
             );
             copyFile(defaultIconPath, iconPath);
+
+            const darkIconPath = path.join(buttonPath, "icon.dark.png");
+            const defaultDarkIconPath = path.join(
+              __dirname,
+              "..",
+              "..",
+              "..",
+              "..",
+              "src",
+              "lib",
+              "assets",
+              "img",
+              "pyRevitLogo_white.png"
+            );
+            copyFile(defaultDarkIconPath, darkIconPath);
 
             showInformationMessage("Extension created successfully");
           }

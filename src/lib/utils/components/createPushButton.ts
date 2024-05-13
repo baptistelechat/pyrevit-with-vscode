@@ -132,10 +132,9 @@ const createPushButton = async () => {
           createDirectory(buttonPath);
 
           const scriptPath = path.join(buttonPath, "script.py");
-          const iconPath = path.join(buttonPath, "icon.png");
-
           createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
+          const iconPath = path.join(buttonPath, "icon.png");
           const defaultIconPath = path.join(
             __dirname,
             "..",
@@ -149,6 +148,21 @@ const createPushButton = async () => {
             "pyRevitLogo_black.png"
           );
           copyFile(defaultIconPath, iconPath);
+
+          const darkIconPath = path.join(buttonPath, "icon.dark.png");
+          const defaultDarkIconPath = path.join(
+            __dirname,
+            "..",
+            "..",
+            "..",
+            "..",
+            "src",
+            "lib",
+            "assets",
+            "img",
+            "pyRevitLogo_white.png"
+          );
+          copyFile(defaultDarkIconPath, darkIconPath);
 
           showInformationMessage("PushButton created successfully");
         }

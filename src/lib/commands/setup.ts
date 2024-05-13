@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import checkOs from "../utils/checkOs";
 import checkPyRevitLib from "../utils/setup/checkPyRevitLib";
 import checkPythonExtension from "../utils/setup/checkPythonExtension";
+import checkPythonInstallation from "../utils/setup/checkPythonInstallation";
 import checkRevitApiStubs from "../utils/setup/checkRevitApiStubs";
 import updateVscSettings from "../utils/setup/updateVscSettings";
 
@@ -13,6 +14,7 @@ const setup = vscode.commands.registerCommand(
     const windowsOs = checkOs();
     if (windowsOs) {
       const options = [
+        t("🐍 Install Python"),
         t("🧩 Install Python extension"),
         t("📕 Install Revit API Stubs"),
         t("📕 Install pyRevit"),
@@ -25,6 +27,9 @@ const setup = vscode.commands.registerCommand(
 
       if (selectedOption) {
         switch (selectedOption) {
+          case t("🐍 Install Python"):
+            checkPythonInstallation();
+            break;
           case t("🧩 Install Python extension"):
             checkPythonExtension();
             break;

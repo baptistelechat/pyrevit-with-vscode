@@ -8,8 +8,8 @@
   "📝 Enter the name of the panel": "📝 Entrez le nom du groupe",
   "📝 Enter the name of the button": "📝 Entrer le nom du bouton",
 
-  "📁 Tab":"📁 Onglet",
-  "📦 Panel":"📦 Groupe",
+  "📁 Tab": "📁 Onglet",
+  "📦 Panel": "📦 Groupe",
 
   "No workspace folder found.": "Aucun dossier de l'espace de travail n'a été trouvé.",
 
@@ -34,9 +34,12 @@
   "🧩 Install Python extension": "🧩 Installer l'extension Python",
   "📕 Install Revit API Stubs": "📕 Installer les Stubs Revit API",
   "📕 Install pyRevit": "📕 Installer pyRevit",
+  "🐍 Install Python": "🐍 Installer Python",
   "📝 Update \"settings.json\"": "📝 Mettre à jour \"settings.json\"",
 
   "Install": "Installer",
+  "Open python.org": "Ouvrir python.org",
+  "Open Microsoft store": "Ouvrir Microsoft store",
   "Enable": "Activer",
   "Download": "Télécharger",
 
@@ -44,6 +47,9 @@
 
   "The Python extension is required to use pyRevit-with-vscode. Do you want to install or enable it now?": "L'extension Python est requise pour utiliser pyRevit-with-vscode. Voulez-vous l'installer ou l'activer maintenant ?",
   "The Python extension is already installed and activated.": "L'extension Python est déjà installée et activée.",
+
+  "Python is correctly installed on the computer": "Python est correctement installé sur l'ordinateur",
+  "Python is not installed or not found in PATH. Do you want to install it now?": "Python n'est pas installé ou n'est pas présent dans le PATH. Voulez-vous l'installer maintenant ?",
 
   "The Revit API Stubs are required to use pyRevit-with-vscode. Do you want to download it now?": "Les Revit API Stubs sont requises pour utiliser pyRevit-with-vscode. Voulez-vous les télécharger maintenant ?",
   "The Revit API Stubs are download and place in %APPDATA%.": "Les Revit API Stubs sont téléchargés et placés dans %APPDATA%.",

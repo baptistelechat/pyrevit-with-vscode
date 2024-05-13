@@ -1,4 +1,3 @@
-import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
@@ -6,10 +5,10 @@ import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
 import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
+import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
 import selectTab from "./utils/selectTab";
-import createFileWithContent from "./utils/createFileWithContent";
 
 const { t } = vscode.l10n;
 
@@ -93,10 +92,9 @@ const createPanel = async () => {
         createDirectory(buttonPath);
 
         const scriptPath = path.join(buttonPath, "script.py");
-        const iconPath = path.join(buttonPath, "icon.png");
-
         createFileWithContent(scriptPath, defaultPyRevitScript("Hello World"));
 
+        const iconPath = path.join(buttonPath, "icon.png");
         const defaultIconPath = path.join(
           __dirname,
           "..",
@@ -110,6 +108,21 @@ const createPanel = async () => {
           "pyRevitLogo_black.png"
         );
         copyFile(defaultIconPath, iconPath);
+
+        const darkIconPath = path.join(buttonPath, "icon.dark.png");
+        const defaultDarkIconPath = path.join(
+          __dirname,
+          "..",
+          "..",
+          "..",
+          "..",
+          "src",
+          "lib",
+          "assets",
+          "img",
+          "pyRevitLogo_white.png"
+        );
+        copyFile(defaultDarkIconPath, darkIconPath);
 
         showInformationMessage("Panel created successfully");
       }

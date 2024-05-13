@@ -46,6 +46,7 @@
       "doc   = __revit__.ActiveUIDocument.Document",
       "uidoc = __revit__.ActiveUIDocument",
       "app   = __revit__.Application",
+      "rvt_year = app.VersionNumber",
       "",
       "logger = script.get_logger()",
       "",

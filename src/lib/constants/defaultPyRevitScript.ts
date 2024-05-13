@@ -8,6 +8,6 @@ if __name__ == '__main__':
     print("${buttonName} clicked!")
 
 # --------------------------------------------------
-# 💡 pyRevit with VSCode: Use pyrvt ou pyrvtmin snippet`;
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet`;
 
 export default defaultPyRevitScript;
