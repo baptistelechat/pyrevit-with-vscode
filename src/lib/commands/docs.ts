@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import checkOs from "../utils/checkOs";
 import openPyRevitDocs from "../utils/docs/openPyRevitDocs";
 import openPyRevitEmojisList from "../utils/docs/openPyRevitEmojisList";
+import openRevitApiDocs from "../utils/docs/openRevitApiDocs";
 
 const { t } = vscode.l10n;
 
@@ -18,7 +19,7 @@ const docs = (context: vscode.ExtensionContext) =>
       if (selectedOption) {
         switch (selectedOption) {
           case "📕 Revit API Docs":
-            openPyRevitDocs(context);
+            openRevitApiDocs(context);
             break;
           case "📕 pyRevit":
             openPyRevitDocs(context);
