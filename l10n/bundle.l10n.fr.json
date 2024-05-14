@@ -3,13 +3,16 @@
 
   "🐍 Select a component to create": "🐍 Sélectionner un composant à créer",
 
-  "📝 Enter the name of the extension": "📝 Saisir le nom de l'extension",
-  "📝 Enter the name of the tab": "📝 Entrer le nom de l'onglet",
-  "📝 Enter the name of the panel": "📝 Entrez le nom du groupe",
-  "📝 Enter the name of the button": "📝 Entrer le nom du bouton",
+  "💼 Enter the name of the extension": "💼 Saisir le nom de l'extension",
+  "📁 Enter the name of the tab": "📁 Entrer le nom de l'onglet",
+  "📦 Enter the name of the panel": "📦 Entrez le nom du groupe",
+  "✨ Enter the name of the button": "✨ Entrer le nom du bouton",
+  "🔗 Enter an URL": "🔗 Entrer une URL",
 
   "📁 Tab": "📁 Onglet",
   "📦 Panel": "📦 Groupe",
+  "✨ Push Button": "✨ Bouton",
+  "🔗 Url Button": "🔗 Url",
 
   "No workspace folder found.": "Aucun dossier de l'espace de travail n'a été trouvé.",
 

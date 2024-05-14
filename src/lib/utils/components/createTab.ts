@@ -45,7 +45,7 @@ const createTab = async () => {
 
   if (typeof selectedExtensionPath === "string") {
     const tabName = await vscode.window.showInputBox({
-      prompt: t("📝 Enter the name of the tab"),
+      prompt: t("📁 Enter the name of the tab"),
     });
 
     if (tabName) {
@@ -75,20 +75,20 @@ const createTab = async () => {
       );
       copyFile(defaultIconPath, iconPath);
 
-      const darkIconPath = path.join(buttonPath, "icon.dark.png");
-      const defaultDarkIconPath = path.join(
-        __dirname,
-        "..",
-        "..",
-        "..",
-        "..",
-        "src",
-        "lib",
-        "assets",
-        "img",
-        "pyRevitLogo_white.png"
-      );
-      copyFile(defaultDarkIconPath, darkIconPath);
+      // const darkIconPath = path.join(buttonPath, "icon.dark.png");
+      // const defaultDarkIconPath = path.join(
+      //   __dirname,
+      //   "..",
+      //   "..",
+      //   "..",
+      //   "..",
+      //   "src",
+      //   "lib",
+      //   "assets",
+      //   "img",
+      //   "pyRevitLogo_white.png"
+      // );
+      // copyFile(defaultDarkIconPath, darkIconPath);
 
       showInformationMessage("Tab created successfully");
     }

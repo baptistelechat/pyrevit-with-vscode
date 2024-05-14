@@ -1,6 +1,5 @@
 import * as path from "path";
 import * as vscode from "vscode";
-import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
 import copyFile from "./utils/copyFile";
@@ -13,7 +12,7 @@ import selectTab from "./utils/selectTab";
 
 const { t } = vscode.l10n;
 
-const createPushButton = async () => {
+const createUrlButton = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
     showErrorMessage("No workspace folder found.");
@@ -123,16 +122,20 @@ const createPushButton = async () => {
           prompt: t("✨ Enter the name of the button"),
         });
 
-        if (buttonName) {
+        const url = await vscode.window.showInputBox({
+          prompt: t("🔗 Enter an URL"),
+        });
+
+        if (buttonName && url) {
           const buttonPath = path.join(
             selectedPanelPath,
-            `${buttonName}.pushbutton`
+            `${buttonName}.urlbutton`
           );
 
           createDirectory(buttonPath);
 
-          const scriptPath = path.join(buttonPath, "script.py");
-          createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
+          const scriptPath = path.join(buttonPath, "bundle.yaml");
+          createFileWithContent(scriptPath, `hyperlink: "${url}"`);
 
           const iconPath = path.join(buttonPath, "icon.png");
           const defaultIconPath = path.join(
@@ -171,4 +174,4 @@ const createPushButton = async () => {
   }
 };
 
-export default createPushButton;
+export default createUrlButton;

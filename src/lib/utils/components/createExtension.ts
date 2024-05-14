@@ -10,22 +10,22 @@ const { t } = vscode.l10n;
 
 async function createExtension() {
   const extensionName = await vscode.window.showInputBox({
-    prompt: t("📝 Enter the name of the extension"),
+    prompt: t("💼 Enter the name of the extension"),
   });
 
   if (extensionName) {
     const tabName = await vscode.window.showInputBox({
-      prompt: t("📝 Enter the name of the tab"),
+      prompt: t("📁 Enter the name of the tab"),
     });
 
     if (tabName) {
       const panelName = await vscode.window.showInputBox({
-        prompt: t("📝 Enter the name of the panel"),
+        prompt: t("📦 Enter the name of the panel"),
       });
 
       if (panelName) {
         const buttonName = await vscode.window.showInputBox({
-          prompt: t("📝 Enter the name of the button"),
+          prompt: t("✨ Enter the name of the button"),
         });
 
         if (buttonName) {
@@ -63,20 +63,20 @@ async function createExtension() {
             );
             copyFile(defaultIconPath, iconPath);
 
-            const darkIconPath = path.join(buttonPath, "icon.dark.png");
-            const defaultDarkIconPath = path.join(
-              __dirname,
-              "..",
-              "..",
-              "..",
-              "..",
-              "src",
-              "lib",
-              "assets",
-              "img",
-              "pyRevitLogo_white.png"
-            );
-            copyFile(defaultDarkIconPath, darkIconPath);
+            // const darkIconPath = path.join(buttonPath, "icon.dark.png");
+            // const defaultDarkIconPath = path.join(
+            //   __dirname,
+            //   "..",
+            //   "..",
+            //   "..",
+            //   "..",
+            //   "src",
+            //   "lib",
+            //   "assets",
+            //   "img",
+            //   "pyRevitLogo_white.png"
+            // );
+            // copyFile(defaultDarkIconPath, darkIconPath);
 
             showInformationMessage("Extension created successfully");
           }

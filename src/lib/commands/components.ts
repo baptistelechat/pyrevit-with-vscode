@@ -4,6 +4,7 @@ import createExtension from "../utils/components/createExtension";
 import createPanel from "../utils/components/createPanel";
 import createPushButton from "../utils/components/createPushButton";
 import createTab from "../utils/components/createTab";
+import createUrlButton from "../utils/components/createUrlButton";
 
 const { t } = vscode.l10n;
 
@@ -16,7 +17,8 @@ const components = vscode.commands.registerCommand(
         "💼 Extension",
         t("📁 Tab"),
         t("📦 Panel"),
-        "✨ PushButton",
+        t("✨ Push Button"),
+        t("🔗 Url Button"),
       ];
 
       const selectedOption = await vscode.window.showQuickPick(options, {
@@ -34,8 +36,11 @@ const components = vscode.commands.registerCommand(
           case t("📦 Panel"):
             createPanel();
             break;
-          case "✨ PushButton":
+          case t("✨ Push Button"):
             createPushButton();
+            break;
+          case t("🔗 Url Button"):
+            createUrlButton();
             break;
         }
       }
