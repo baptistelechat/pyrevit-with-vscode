@@ -1,4 +1,5 @@
 {
   "setup": "🛠️ pyRevit with VSCode: Configuration",
-  "docs": "📚 pyRevit with VSCode: Documentation"
+  "docs": "📚 pyRevit with VSCode: Documentation",
+  "components": "🐍 pyRevit with VSCode: Composants"
 }
