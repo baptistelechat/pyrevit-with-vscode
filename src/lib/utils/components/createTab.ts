@@ -71,6 +71,7 @@ const createTab = async () => {
         "lib",
         "assets",
         "img",
+        "pyRevitLogo",
         "pyRevitLogo_black.png"
       );
       copyFile(defaultIconPath, iconPath);
@@ -86,6 +87,7 @@ const createTab = async () => {
       //   "lib",
       //   "assets",
       //   "img",
+      // "pyRevitLogo",
       //   "pyRevitLogo_white.png"
       // );
       // copyFile(defaultDarkIconPath, darkIconPath);

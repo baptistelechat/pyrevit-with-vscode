@@ -24,6 +24,7 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "icon": "src/lib/assets/img/logo/pyRevitWithVSCodeLogo_min.png",
   "main": "./out/extension.js",
   "l10n": "./l10n",
   "contributes": {
@@ -58,7 +59,11 @@
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "pnpm vsce package --no-dependencies",
+    "publish:patch": "pnpm vsce publish patch --no-dependencies",
+    "publish:minor": "pnpm vsce publish minor --no-dependencies",
+    "publish:major": "pnpm vsce publish major --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

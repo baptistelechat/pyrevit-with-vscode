@@ -105,6 +105,7 @@ const createPanel = async () => {
           "lib",
           "assets",
           "img",
+          "pyRevitLogo",
           "pyRevitLogo_black.png"
         );
         copyFile(defaultIconPath, iconPath);
@@ -120,6 +121,7 @@ const createPanel = async () => {
         //   "lib",
         //   "assets",
         //   "img",
+        // "pyRevitLogo",
         //   "pyRevitLogo_white.png"
         // );
         // copyFile(defaultDarkIconPath, darkIconPath);
