@@ -8,6 +8,7 @@ import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
 import pyRevitPath from "./lib/constants/pyRevitPath";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
+import replaceAuthorInSnippets from "./lib/utils/replaceAuthorInSnippets";
 import setAuthor from "./lib/utils/setAuthor";
 import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
 import checkPythonExtension from "./lib/utils/setup/checkPythonExtension";
@@ -22,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(setup);
   context.subscriptions.push(docs(context));
   context.subscriptions.push(components);
+  context.subscriptions.push(replaceAuthorInSnippets);
 
   if (windowsOs) {
     // Check if Python is installed
