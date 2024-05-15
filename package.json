@@ -27,6 +27,16 @@
   "main": "./out/extension.js",
   "l10n": "./l10n",
   "contributes": {
+    "configuration": {
+      "title": "pyRevit with VS Code",
+      "properties": {
+        "pyrevit-with-vscode.author": {
+          "type": "string",
+          "default": "",
+          "description": "Author name in snippets for pyRevit with VS Code."
+        }
+      }
+    },
     "commands": [
       {
         "command": "pyrevit-with-vscode.setup",

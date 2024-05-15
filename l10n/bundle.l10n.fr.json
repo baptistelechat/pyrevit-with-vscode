@@ -63,5 +63,7 @@
 
   "Select the Revit API versions": "Sélectionnez les versions de Revit API",
   "\"settings.json\" has been updated.": "\"settings.json\" a été mis à jour.",
-  "Revit API versions selection aborted": "La sélection des versions de Revit API a été annulée"
+  "Revit API versions selection aborted": "La sélection des versions de Revit API a été annulée",
+
+  "The default author of pyRevit with VSCode is John Doe. To update it, go to the setting.json file and modify \"pyrevit-with-vscode.author\" key.": "L'auteur par défaut de pyRevit with VSCode est John Doe. Pour le mettre à jour, allez dans le fichier setting.json et modifiez la clé \"pyrevit-with-vscode.author\"."
 }

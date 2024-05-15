@@ -8,6 +8,8 @@ import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
 import pyRevitPath from "./lib/constants/pyRevitPath";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
+import replaceAuthorInSnippets from "./lib/utils/replaceAuthorInSnippets";
+import setAuthor from "./lib/utils/setAuthor";
 import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
 import checkPythonExtension from "./lib/utils/setup/checkPythonExtension";
 import checkPythonInstallation from "./lib/utils/setup/checkPythonInstallation";
@@ -21,6 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(setup);
   context.subscriptions.push(docs(context));
   context.subscriptions.push(components);
+  context.subscriptions.push(replaceAuthorInSnippets);
 
   if (windowsOs) {
     // Check if Python is installed
@@ -45,12 +48,21 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Read "python.autoComplete.extraPaths" in setting.json
-    const config = vscode.workspace.getConfiguration("python");
-    const extraPaths = config.get<string[]>("autoComplete.extraPaths");
+    const config = vscode.workspace.getConfiguration();
+    const extraPaths = config.get<string[]>("python.autoComplete.extraPaths");
     if (!extraPaths || extraPaths.length === 0) {
       updateVscSettings();
     }
+
+    // Read "pyrevit-with-vscode.author" in setting.json
+    setAuthor();
+
+    // Extension "pyrevit-with-vscode" is now active!
+    console.log('Extension "pyrevit-with-vscode" is now active!');
   }
 }
 
-export function deactivate() {}
+export function deactivate() {
+  // Extension "pyrevit-with-vscode" is now deactivated
+  console.log('Extension "pyrevit-with-vscode" is now deactivated');
+}
