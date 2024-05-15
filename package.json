@@ -70,10 +70,10 @@
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "pnpm vsce package --no-dependencies",
-    "publish:patch": "pnpm vsce publish patch --no-dependencies",
-    "publish:minor": "pnpm vsce publish minor --no-dependencies",
-    "publish:major": "pnpm vsce publish major --no-dependencies"
+    "package": "pnpm dlx vsce package --no-dependencies",
+    "publish:patch": "pnpm version patch --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish patch --no-dependencies",
+    "publish:minor": "pnpm version minor --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish minor --no-dependencies",
+    "publish:major": "pnpm version major --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish major --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

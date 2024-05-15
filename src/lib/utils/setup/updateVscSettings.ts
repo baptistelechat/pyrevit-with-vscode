@@ -9,8 +9,8 @@ const { t } = vscode.l10n;
 const updateVscSettings = async () => {
   // Check "python.autoComplete.extraPaths" in setting.json
   const config = vscode.workspace.getConfiguration();
-  const extraPaths =
-    config.get<string[]>("python.autoComplete.extraPaths") || [];
+  const analysisExtraPaths =
+    config.get<string[]>("python.analysis.extraPaths") || [];
 
   const revitApiStubsVersions = await vscode.workspace.fs.readDirectory(
     vscode.Uri.file(revitApiStubsPath)
@@ -21,7 +21,9 @@ const updateVscSettings = async () => {
 
   const items = revitApiStubsVersionNames.map((name) => {
     const label = name.replace("RVT ", "Revit ");
-    const picked = extraPaths.includes(path.join(revitApiStubsPath, name));
+    const picked = analysisExtraPaths.includes(
+      path.join(revitApiStubsPath, name)
+    );
     return { label, picked };
   });
 
@@ -41,7 +43,12 @@ const updateVscSettings = async () => {
     newExtraPaths.push(pyRevitMasterPath);
 
     config.update(
-      "autoComplete.extraPaths",
+      "python.analysis.extraPaths",
+      newExtraPaths,
+      vscode.ConfigurationTarget.Global
+    );
+    config.update(
+      "python.autoComplete.extraPaths",
       newExtraPaths,
       vscode.ConfigurationTarget.Global
     );

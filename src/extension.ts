@@ -49,8 +49,18 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Read "python.autoComplete.extraPaths" in setting.json
     const config = vscode.workspace.getConfiguration();
-    const extraPaths = config.get<string[]>("python.autoComplete.extraPaths");
-    if (!extraPaths || extraPaths.length === 0) {
+    const autoCompleteExtraPaths = config.get<string[]>(
+      "python.autoComplete.extraPaths"
+    );
+    const analysisExtraPaths = config.get<string[]>(
+      "python.analysis.extraPaths"
+    );
+    if (
+      !autoCompleteExtraPaths ||
+      autoCompleteExtraPaths.length === 0 ||
+      !analysisExtraPaths ||
+      analysisExtraPaths.length === 0
+    ) {
       updateVscSettings();
     }
 
