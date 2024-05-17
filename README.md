@@ -56,6 +56,7 @@ These 2 options check whether Revit API Stubs and pyRevit are installed on the u
 Once download and installation are complete, VSCode may need to be restarted to reload all extensions and settings.
 
 #### 📝 Update "settings.json"
+
 If you want autocomplete in your python files, you need Revit API Stubs, pyRevit and the correct configuration of your VSCode settings (settings.json).
 
 This option checks if "python.analysis.extraPaths" and "python.autoComplete.extraPaths" are configured in the VSCode settings. If the properties are empty, you are invited to select the desired Revit versions. Currently, you can choose from Revit 2020 to Revit 2024.
@@ -63,6 +64,28 @@ This option checks if "python.analysis.extraPaths" and "python.autoComplete.extr
 If autocomplete doesn't work, restart VSCode to reload all extensions and parameters.
 
 ### 📚 Documentation
+
+Access useful online documentation directly from the IDE.
+
+#### 📕 Revit API Docs
+
+Online documentation for explore Autodesk's Revit API from Revit 2019 to Revit 2024.
+
+#### 📕 pyRevit
+
+Online documentation to learn pyRevit and access to the “Developer Docs” section to get code snippets.
+
+#### 🎨 pyRevit Emojis
+
+You can't insert emojis directly into your code. If you do, the emoji appear in black and white with only the outline. To insert an emoji, you need to write the shorthand of the desired emoji between a colon ( : ). pyRevit provides its own custom icons, and this documentation lists all available icons in a table with, for each line, a preview of the icon, the name, the shorthand and the HEX code. On click of the row, the shorthand code is copy into you're clipboard.
+
+At the top of the table is a search bar for finding an icon. You can find an emoji by typing it into the input field.
+
+Some examples:
+- 🐍 → ```:snake:``` 
+- 📄 → ```:page_facing_up:``` 
+- 💻 → ```:laptop_computer:``` 
+- 😉 → ```:winking_face:``` 
 
 ### 🐍 Components
 
