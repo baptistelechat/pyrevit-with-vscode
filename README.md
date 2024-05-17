@@ -65,7 +65,13 @@ If autocomplete doesn't work, restart VSCode to reload all extensions and parame
 
 ### 📚 Documentation
 
-Access useful online documentation directly from the IDE.
+Open the command palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>p</kbd>) and search **"📚 pyRevit with VSCode: Documentation"** to access useful online documentation directly from the IDE.
+
+A menu opens, showing a choice of options:
+
+- 📕 Revit API Docs
+- 📕 pyRevit
+- 🎨 pyRevit Emojis
 
 #### 📕 Revit API Docs
 
@@ -82,12 +88,232 @@ You can't insert emojis directly into your code. If you do, the emoji appear in 
 At the top of the table is a search bar for finding an icon. You can find an emoji by typing it into the input field.
 
 Some examples:
-- 🐍 → ```:snake:``` 
-- 📄 → ```:page_facing_up:``` 
-- 💻 → ```:laptop_computer:``` 
-- 😉 → ```:winking_face:``` 
+
+- 🐍 → `:snake:`
+- 📄 → `:page_facing_up:`
+- 💻 → `:laptop_computer:`
+- 😉 → `:winking_face:`
 
 ### 🐍 Components
+
+Open the command palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>p</kbd>) and search **"🐍 pyRevit with VSCode: Component"** to access functions for easily create a new component.
+
+A menu opens, showing a choice of options:
+
+- 💼 Extension
+- 📁 Tab
+- 📦 Panel
+- ✨ Push Button
+- 🔗 Url Button
+
+#### 💼 Extension
+
+Create a new pyRevit extension by selecting this option. You will be prompt for :
+
+1. 💼 Enter the name of the extension
+2. 📁 Enter the name of the tab
+3. 📦 Enter the name of the panel
+4. ✨ Enter the name of the button
+
+A new extension will be created in the workspace with the following structure:
+
+```
+[new_extension_name].extension
+└─ [new_tab_name].tab
+   └─ [new_panel_name].panel
+      └─ [new_push_button_name].pushbutton
+         ├─ icon.png
+         └─ script.py
+```
+
+A default icon and a python script with the minimal code for work in Revit are added.
+
+> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = [new_push_button_name]
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is [new_push_button_name] Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("[new_push_button_name] clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### 📁 Tab
+
+Create a new tab in existing extension by selecting this option. You will be prompt for :
+
+1. 💼 Select an extension
+2. 📁 Enter the name of the tab
+
+A new tab will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+├─ [existing_tab].tab
+│   └─ [existing_panel].panel
+│      └─ [existing_push_button].pushbutton
+│         ├─ icon.png
+│         └─ script.py
+└─ [new_tab_name].tab
+   └─ New Panel.panel
+      └─ Hello World.pushbutton
+         ├─ icon.png
+         └─ script.py
+```
+
+A panel containing a Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
+
+> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = "Hello World"
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is Hello World Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("Hello World clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### 📦 Panel
+
+Create a new panel in existing tab by selecting this option. You will be prompt for :
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Enter the name of the panel
+
+A new panel will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   ├─ [existing_panel].panel
+   │  └─ [existing_push_button].pushbutton
+   │     ├─ icon.png
+   │     └─ script.py
+   └─ [new_panel].panel
+      └─ Hello World.pushbutton
+         ├─ icon.png
+         └─ script.py
+```
+
+An Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
+
+> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = "Hello World"
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is Hello World Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("Hello World clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### ✨ Push Button
+
+Create a new push button in existing panel by selecting this option. You will be prompt for :
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Select a panel
+4. ✨ Enter the name of the button
+
+A new push button will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   └─ [selected_panel].panel
+      ├─ [existing_push_button].pushbutton
+      │  ├─ icon.png
+      │  └─ script.py
+      └─ [new_push_button_name].pushbutton
+         ├─ icon.png
+         └─ script.py
+```
+
+A default icon and a python script with the minimal code for work in Revit are added.
+
+> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = [new_push_button_name]
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is [new_push_button_name] Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("[new_push_button_name] clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### 🔗 Url Button
+
+Create a new url button in existing panel by selecting this option. You will be prompt for :
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Select a panel
+4. ✨ Enter the name of the button
+5. 🔗 Enter an URL
+
+A new url button will be created in the workspace with the following structure with the given url:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   └─ [selected_panel].panel
+      ├─ [existing_button].pushbutton
+      │  ├─ icon.png
+      │  └─ script.py
+      └─ [new_url_button_name].urlbutton
+         ├─ bundle.yaml
+         └─ icon.png
+```
+
+A default icon and bundle file with given url are added.
+
+```yaml
+# bundle.yaml
+# --------------------------------------------------
+hyperlink: "example.com"
+```
 
 ### 📄 Snippets
 
