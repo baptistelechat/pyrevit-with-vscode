@@ -1,12 +1,20 @@
 <h1 align="center">pyRevit with VSCode 🐍</h1>
 
-  <!-- <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/publish/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right"> -->
+![GitHub package.json version](https://img.shields.io/github/package-json/v/baptistelechat/pyrevit-with-vscode)
 
-A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the creation of Revit plug-ins using pyRevit.
+
+![GitHub License](https://img.shields.io/github/license/baptistelechat/pyrevit-with-vscode)
+
+[![GitHub latest commit](https://badgen.net/github/last-commit/baptistelechat/pyrevit-with-vscode)](https://github.com/baptistelechat/pyrevit-with-vscode/commit/main)
 
 <a href="https://gitmoji.carloscuesta.me">
 	<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
 </a>
+
+  <!-- <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/publish/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right"> -->
+
+A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the creation of Revit plug-ins using pyRevit.
+
 
 ## Features
 
@@ -130,8 +138,6 @@ A new extension will be created in the workspace with the following structure:
 
 A default icon and a python script with the minimal code for work in Revit are added.
 
-> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
-
 ```python
 # script.py
 # --------------------------------------------------
@@ -174,8 +180,6 @@ A new tab will be created in the workspace with the following structure:
 ```
 
 A panel containing a Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
-
-> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
@@ -220,8 +224,6 @@ A new panel will be created in the workspace with the following structure:
 
 An Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
 
-> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
-
 ```python
 # script.py
 # --------------------------------------------------
@@ -264,8 +266,6 @@ A new push button will be created in the workspace with the following structure:
 ```
 
 A default icon and a python script with the minimal code for work in Revit are added.
-
-> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
@@ -319,21 +319,207 @@ hyperlink: "example.com"
 
 ### 📄 Snippets
 
-### 👽 Others
+This extension provides 2 templates for easily starting a new python script.
+
+> 📅 The date value is automatically set to the current date.
+
+#### 📝 pyrvt (pyRevit Full Template)
+
+This is the most comprehensive and complete template provided by the pyRevit-with-VSCode extension. It is ideal for beginners in the creation of pyRevit extensions. You can provide information using tabs to move the cursor : 
+
+1. Title *(string)*
+2. Author *(string)*
+3. Minimum Revit version allow *(number : 2020, 2021, 2022, 2023 or 2024)*
+4. Maximum Revit version allow *(number : 2024, 2023, 2022, 2021 or 2020)*
+
+"0$" marks the location of your cursor after filling in the previous options.
+
+```python
+# -*- coding: utf-8 -*-
+__title__ = "${1:title}" # Name of the button displayed in Revit UI
+__doc__ = """
+Version = 1.0
+Date = 19.05.2024
+_____________________________________________________________________
+Description:
+This is a template file for pyRevit Scripts.
+_____________________________________________________________________
+How-to:
+-> Click on the button
+-> Change Settings(optional)
+-> Make a change
+_____________________________________________________________________
+Last update:
+- [19.05.2024] - 1.0 RELEASE
+_____________________________________________________________________
+To-Do:
+- 
+_____________________________________________________________________
+Author: ${2:John Doe}""" # Button Description shown in Revit UI
+
+# EXTRA: You can remove them.
+__author__ = "${2:John Doe}" # Script's Author
+__helpurl__ = "https://github.com/baptistelechat/pyrevit-with-vscode" # Link that can be opened with F1 when hovered over the tool in Revit UI.
+__min_revit_ver__ = ${3|2020,2021,2022,2023,2024|} # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
+__max_revit_ver__ = ${4|2024,2023,2022,2021,2020|} # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
+# __highlight__ = "new" # Button will have an orange dot + Description in Revit UI ("new" | "updated"
+# __context__ = [ "selection", "active-section-view"] # Make it available only if Active view is Section and something is Selected
+# __context__     = ["Walls", "Floors", "Roofs"] # Make your button available only when certain categories are selected. Or Revit/View Types.
+
+# 🔗 For extra bundle metadata : https://pyrevitlabs.notion.site/Bundle-Metadata-9fa4911c14fa49c48e715421400f1427
+# 🔗 For extra bundle context : https://pyrevitlabs.notion.site/Bundle-Context-630fa1f3611f4ee0aa15d290275e7ef3
+
+# ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
+# ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
+# ╩╩ ╩╩  ╚═╝╩╚═ ╩ ╚═╝ IMPORTS 📚
+# ==================================================
+# Regular + Autodesk
+import os, sys, math, datetime, time # Regular Imports
+from Autodesk.Revit.DB import * # Import everything from DB or Import only classes that are used. (from Autodesk.Revit.DB import Transaction, FilteredElementCollector)
+
+# pyRevit
+from pyrevit import revit, forms, script # type: ignore # import pyRevit modules.
+
+# Custom Imports
+# from Snippets._selection import get_selected_elements # lib import
+# from Snippets._convert import convert_internal_to_m # lib import
+
+# .NET Imports
+import clr # Common Language Runtime. Makes .NET libraries accessible
+clr.AddReference("System") # Reference System.dll for import.
+from System.Collections.Generic import List # type: ignore # List<ElementType>() <- it's special type of list from .NET framework that RevitAPI requires
+
+# ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
+# ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
+#  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝ VARIABLES 📄
+# ==================================================
+doc   = __revit__.ActiveUIDocument.Document # type: ignore # Document class from RevitAPI that represents project. Used to Create, Delete, Modify and Query elements from the project.
+uidoc = __revit__.ActiveUIDocument # type: ignore # UIDocument class from RevitAPI that represents Revit project opened in the Revit UI.
+app   = __revit__.Application # type: ignore # Represents the Autodesk Revit Application, providing access to documents, options and other application wide data and settings.
+rvt_year = int(app.VersionNumber) # Get current revit version.
+PATH_SCRIPT = os.path.dirname(__file__) # Absolute path to the folder where script is placed.
+
+# GLOBAL VARIABLES
+
+# - Place global variables here.
+logger = script.get_logger()
+
+# ╔═╗╦ ╦╔╗╔╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
+# ╠╣ ║ ║║║║║   ║ ║║ ║║║║╚═╗
+# ╚  ╚═╝╝╚╝╚═╝ ╩ ╩╚═╝╝╚╝╚═╝ FUNCTIONS 🛠️
+# ==================================================
+
+# - Place local functions here. If you might use any functions in other scripts, consider placing it in the lib folder.
+
+# ╔═╗╦  ╔═╗╔═╗╔═╗╔═╗╔═╗
+# ║  ║  ╠═╣╚═╗╚═╗║╣ ╚═╗
+# ╚═╝╩═╝╩ ╩╚═╝╚═╝╚═╝╚═╝ CLASSES 📦
+# ==================================================
+
+# - Place local classes here. If you might use any classes in other scripts, consider placing it in the lib folder.
+
+# ╔╦╗╔═╗╦╔╗╔
+# ║║║╠═╣║║║║
+# ╩ ╩╩ ╩╩╝╚╝ MAIN 🎯
+# ==================================================
+# 📝 For input display: https://pyrevitlabs.notion.site/Effective-Input-ea95e95282a24ba9b154ef88f4f8d056
+# 🎨 For output display : https://pyrevitlabs.notion.site/Effective-Output-43baf34d2ca247ada8e040bcb86613a2
+# 📊 For data visualization : https://pyrevitlabs.notion.site/Visualizing-Data-fd778a0b67354ff581aa340619b87803
+
+if __name__ == '__main__':
+    # START CODE HERE
+
+    # AVOID  placing Transaction inside of your loops! It will drastically reduce performance of your script.
+    t = Transaction(doc,__title__) # 🔏 Transactions are context-like objects that guard any changes made to a Revit model.
+
+    # You need to use t.Start() and t.Commit() to make changes to a Project.
+    t.Start() # <- Transaction Start 🔓
+
+    #- CHANGES TO REVIT PROJECT HERE 🏡
+    $0
+
+    t.Commit() # <- Transaction End 🔒
+
+    # Notify user that script is complete. 🔔
+    logger.success(':chequered_flag: Script is finished.')
+    print('-' * 50)
+    print(':page_facing_up: Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.')
+```
+#### 📝 pyrvtmin (pyRevit Min Template)
+
+This is minimal template provided by the pyRevit-with-VSCode extension. It is ideal for user that master the the creation of pyRevit extensions. You can provides : 
+
+1. Title *(string)*
+2. Author *(string)*
+
+"0$" marks the location of your cursor after filling in the previous options.
+
+```python
+# -*- coding: utf-8 -*-
+__title__ = "${1:title}"
+__doc__ = """
+Version = 1.0
+Date = 19.05.2024
+_____________________________________________________________________
+Description:
+This is a template file for pyRevit Scripts.
+_____________________________________________________________________
+How-to:
+-> Click on the button
+-> Change Settings(optional)
+-> Make a change
+_____________________________________________________________________
+Last update:
+- [19.05.2024] - 1.0 RELEASE
+_____________________________________________________________________
+To-Do:
+- 
+_____________________________________________________________________
+Author: ${2:John Doe}"""
+
+# ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
+# ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
+# ╩╩ ╩╩  ╚═╝╩╚═ ╩ ╚═╝ IMPORTS 📚
+# ==================================================
+# Regular + Autodesk
+from Autodesk.Revit.DB import *
+
+# pyRevit
+from pyrevit import revit, forms, script # type: ignore
+
+# .NET Imports
+import clr
+clr.AddReference("System")
+from System.Collections.Generic import List # type: ignore
+
+# ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
+# ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
+#  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝ VARIABLES 📄
+# ==================================================
+doc   = __revit__.ActiveUIDocument.Document # type: ignore
+uidoc = __revit__.ActiveUIDocument # type: ignore
+app   = __revit__.Application # type: ignore
+rvt_year = int(app.VersionNumber)
+
+logger = script.get_logger()
+
+# ╔╦╗╔═╗╦╔╗╔
+# ║║║╠═╣║║║║
+# ╩ ╩╩ ╩╩╝╚╝ MAIN 🎯
+# ==================================================
+if __name__ == '__main__':
+    # START CODE HERE
+    $0
+
+    print('-' * 50)
+    print(':page_facing_up: Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.')
+```
 
 ## 😸 Maintainers
 
 This project is mantained by:
 
 - [Baptiste LECHAT - baptistelechat](https://github.com/baptistelechat)
-
-## 👨‍💻👩‍💻 Contributing
-
-1. Fork it
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -m 'Add some feature')
-4. Push your branch (git push origin my-new-feature)
-5. Create a new Pull Request
 
 ## ⭐ Show your support
 

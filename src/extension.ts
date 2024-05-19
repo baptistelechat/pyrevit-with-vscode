@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(setup);
   context.subscriptions.push(docs(context));
   context.subscriptions.push(components);
-  context.subscriptions.push(replaceAuthorInSnippets);
+  // context.subscriptions.push(replaceAuthorInSnippets);
 
   if (windowsOs) {
     // Check if Python is installed
@@ -65,7 +65,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Read "pyrevit-with-vscode.author" in setting.json
-    setAuthor();
+    // setAuthor();
 
     // Extension "pyrevit-with-vscode" is now active!
     console.log('Extension "pyrevit-with-vscode" is now active!');
