@@ -106,6 +106,8 @@ A menu opens, showing a choice of options:
 - ✨ Push Button
 - 🔗 Url Button
 
+> 💡 When the user is prompted to select an existing component, the “+ New value” option appears, allowing the user to interrupt the current process and create the desired new component.
+
 #### 💼 Extension
 
 Create a new pyRevit extension by selecting this option. You will be prompt for :
@@ -128,7 +130,7 @@ A new extension will be created in the workspace with the following structure:
 
 A default icon and a python script with the minimal code for work in Revit are added.
 
-> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
@@ -173,7 +175,7 @@ A new tab will be created in the workspace with the following structure:
 
 A panel containing a Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
 
-> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
@@ -218,7 +220,7 @@ A new panel will be created in the workspace with the following structure:
 
 An Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
 
-> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
@@ -263,7 +265,7 @@ A new push button will be created in the workspace with the following structure:
 
 A default icon and a python script with the minimal code for work in Revit are added.
 
-> 💡 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
+> 👤 The script author is automatically retrieved from your VSCode parameters: **"pyrevit-with-vscode.author"** (default value = "John Doe").
 
 ```python
 # script.py
