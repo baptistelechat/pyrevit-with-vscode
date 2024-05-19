@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(setup);
   context.subscriptions.push(docs(context));
   context.subscriptions.push(components);
-  context.subscriptions.push(replaceAuthorInSnippets);
+  // context.subscriptions.push(replaceAuthorInSnippets);
 
   if (windowsOs) {
     // Check if Python is installed
@@ -49,13 +49,23 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Read "python.autoComplete.extraPaths" in setting.json
     const config = vscode.workspace.getConfiguration();
-    const extraPaths = config.get<string[]>("python.autoComplete.extraPaths");
-    if (!extraPaths || extraPaths.length === 0) {
+    const autoCompleteExtraPaths = config.get<string[]>(
+      "python.autoComplete.extraPaths"
+    );
+    const analysisExtraPaths = config.get<string[]>(
+      "python.analysis.extraPaths"
+    );
+    if (
+      !autoCompleteExtraPaths ||
+      autoCompleteExtraPaths.length === 0 ||
+      !analysisExtraPaths ||
+      analysisExtraPaths.length === 0
+    ) {
       updateVscSettings();
     }
 
     // Read "pyrevit-with-vscode.author" in setting.json
-    setAuthor();
+    // setAuthor();
 
     // Extension "pyrevit-with-vscode" is now active!
     console.log('Extension "pyrevit-with-vscode" is now active!');

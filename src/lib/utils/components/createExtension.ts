@@ -59,6 +59,7 @@ async function createExtension() {
               "lib",
               "assets",
               "img",
+              "pyRevitLogo",
               "pyRevitLogo_black.png"
             );
             copyFile(defaultIconPath, iconPath);
@@ -74,6 +75,7 @@ async function createExtension() {
             //   "lib",
             //   "assets",
             //   "img",
+            // "pyRevitLogo",
             //   "pyRevitLogo_white.png"
             // );
             // copyFile(defaultDarkIconPath, darkIconPath);

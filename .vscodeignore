@@ -9,3 +9,6 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+
+# Custom rules
+!src/lib/assets/img/logo/pyRevitWithVSCodeLogo_min.png

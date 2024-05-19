@@ -3,6 +3,7 @@
   "displayName": "pyRevit with VSCode",
   "description": "A VS Code extension to simplify the creation of Revit plug-ins using pyRevit.",
   "version": "0.0.1",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baptistelechat/pyrevit-with-vscode"
@@ -21,9 +22,19 @@
     "Snippets",
     "Extension Packs"
   ],
+  "keywords": [
+    "revit",
+    "pyrevit",
+    "python"
+  ],
   "activationEvents": [
     "onStartupFinished"
   ],
+  "icon": "src/lib/assets/img/logo/pyRevitWithVSCodeLogo_min.png",
+  "galleryBanner": {
+    "color": "#007ACC",
+    "theme": "light"
+  },
   "main": "./out/extension.js",
   "l10n": "./l10n",
   "contributes": {
@@ -68,7 +79,11 @@
     "watch": "tsc -watch -p ./",
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "package": "pnpm dlx vsce package --no-dependencies",
+    "publish:patch": "pnpm version patch --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish patch --no-dependencies",
+    "publish:minor": "pnpm version minor --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish minor --no-dependencies",
+    "publish:major": "pnpm version major --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish major --no-dependencies"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
