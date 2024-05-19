@@ -1,17 +1,8 @@
 <h1 align="center">pyRevit with VSCode 🐍</h1>
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/baptistelechat/pyrevit-with-vscode)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/baptistelechat/pyrevit-with-vscode) ![GitHub License](https://img.shields.io/github/license/baptistelechat/pyrevit-with-vscode) [![GitHub latest commit](https://badgen.net/github/last-commit/baptistelechat/pyrevit-with-vscode)](https://github.com/baptistelechat/pyrevit-with-vscode/commit/main)
 
-
-![GitHub License](https://img.shields.io/github/license/baptistelechat/pyrevit-with-vscode)
-
-[![GitHub latest commit](https://badgen.net/github/last-commit/baptistelechat/pyrevit-with-vscode)](https://github.com/baptistelechat/pyrevit-with-vscode/commit/main)
-
-<a href="https://gitmoji.carloscuesta.me">
-	<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
-</a>
-
-<!-- <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/publish/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right"> -->
+<img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/main/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right">
 
 A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the creation of Revit plug-ins using pyRevit.
 
@@ -20,10 +11,10 @@ A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the
 
 The pyRevit with VSCode extension includes useful features for developing pyRevit extensions:
 
-- Configure VSCode to use pyRevit,
-- Access documentation,
-- Create components,
-- Use basic templates
+- [Configure VSCode to use pyRevit](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#%EF%B8%8F-setup)
+- [Access documentation](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-documentation)
+- [Create components](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-components)
+- [Use basic templates](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-snippets)
 
 ### 🛠️ Setup
 
@@ -33,11 +24,11 @@ Open the command palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>p</kbd>) and
 
 A menu opens, showing a choice of options:
 
-- 🐍 Install Python
-- 🧩 Install Python extension
-- 📕 Install Revit API Stubs
-- 📕 Install pyRevit
-- 📝 Update "settings.json"
+- [🐍 Install Python](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-install-python)
+- [🧩 Install Python extension](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-install-python-extension)
+- [📕 Install Revit API Stubs](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-install-revit-api-stubs---install-pyrevit)
+- [📕 Install pyRevit](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-install-revit-api-stubs---install-pyrevit)
+- [📝 Update "settings.json"](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-update-settingsjson)
 
 #### 🐍 Install Python
 
@@ -108,17 +99,17 @@ Open the command palette (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>p</kbd>) and
 
 A menu opens, showing a choice of options:
 
-- 💼 Extension
-- 📁 Tab
-- 📦 Panel
-- ✨ Push Button
-- 🔗 Url Button
+- [💼 Extension](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-extension)
+- [📁 Tab](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-tab)
+- [📦 Panel](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-panel)
+- [✨ Push Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-push-button)
+- [🔗 Url Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-url-button)
 
 > 💡 When the user is prompted to select an existing component, the “+ New value” option appears, allowing the user to interrupt the current process and create the desired new component.
 
 #### 💼 Extension
 
-Create a new pyRevit extension by selecting this option. You will be prompt for :
+Create a new pyRevit extension by selecting this option. You will be prompt for:
 
 1. 💼 Enter the name of the extension
 2. 📁 Enter the name of the tab
@@ -158,7 +149,7 @@ if __name__ == '__main__':
 
 #### 📁 Tab
 
-Create a new tab in existing extension by selecting this option. You will be prompt for :
+Create a new tab in existing extension by selecting this option. You will be prompt for:
 
 1. 💼 Select an extension
 2. 📁 Enter the name of the tab
@@ -201,7 +192,7 @@ if __name__ == '__main__':
 
 #### 📦 Panel
 
-Create a new panel in existing tab by selecting this option. You will be prompt for :
+Create a new panel in existing tab by selecting this option. You will be prompt for:
 
 1. 💼 Select an extension
 2. 📁 Select a tab
@@ -244,7 +235,7 @@ if __name__ == '__main__':
 
 #### ✨ Push Button
 
-Create a new push button in existing panel by selecting this option. You will be prompt for :
+Create a new push button in existing panel by selecting this option. You will be prompt for:
 
 1. 💼 Select an extension
 2. 📁 Select a tab
@@ -287,7 +278,7 @@ if __name__ == '__main__':
 
 #### 🔗 Url Button
 
-Create a new url button in existing panel by selecting this option. You will be prompt for :
+Create a new url button in existing panel by selecting this option. You will be prompt for:
 
 1. 💼 Select an extension
 2. 📁 Select a tab
@@ -319,18 +310,22 @@ hyperlink: "example.com"
 
 ### 📄 Snippets
 
-This extension provides 2 templates for easily starting a new python script.
+This extension provides 2 templates for easily starting a new python script:
+
+- [📝 pyrvt (pyRevit Full Template)](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-pyrvt-pyrevit-full-template)
+- [📝 pyrvtmin (pyRevit Min Template)](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-pyrvtmin-pyrevit-min-template)
+
 
 > 📅 The date value is automatically set to the current date.
 
 #### 📝 pyrvt (pyRevit Full Template)
 
-This is the most comprehensive and complete template provided by the pyRevit-with-VSCode extension. It is ideal for beginners in the creation of pyRevit extensions. You can provide information using tabs to move the cursor : 
+This is the most comprehensive and complete template provided by the pyRevit-with-VSCode extension. It is ideal for beginners in the creation of pyRevit extensions. You can provide information using tabs to move the cursor: 
 
 1. Title *(string)*
 2. Author *(string)*
-3. Minimum Revit version allow *(number : 2020, 2021, 2022, 2023 or 2024)*
-4. Maximum Revit version allow *(number : 2024, 2023, 2022, 2021 or 2020)*
+3. Minimum Revit version allow *(number: 2020, 2021, 2022, 2023 or 2024)*
+4. Maximum Revit version allow *(number: 2024, 2023, 2022, 2021 or 2020)*
 
 "0$" marks the location of your cursor after filling in the previous options.
 
@@ -447,7 +442,7 @@ if __name__ == '__main__':
 ```
 #### 📝 pyrvtmin (pyRevit Min Template)
 
-This is minimal template provided by the pyRevit-with-VSCode extension. It is ideal for user that master the the creation of pyRevit extensions. You can provides : 
+This is minimal template provided by the pyRevit-with-VSCode extension. It is ideal for user that master the the creation of pyRevit extensions. You can provides: 
 
 1. Title *(string)*
 2. Author *(string)*
@@ -517,7 +512,7 @@ if __name__ == '__main__':
 
 ## 🔄 Translation
 
-This extension use l10n (localisation) and is currently available in : 
+This extension use l10n (localisation) and is currently available in: 
 - English *(en)*
 - French *(fr)*
 
