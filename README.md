@@ -11,7 +11,7 @@
 	<img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
 </a>
 
-  <!-- <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/publish/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right"> -->
+<!-- <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/publish/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right"> -->
 
 A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the creation of Revit plug-ins using pyRevit.
 
@@ -514,6 +514,12 @@ if __name__ == '__main__':
     print('-' * 50)
     print(':page_facing_up: Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.')
 ```
+
+## 🔄 Translation
+
+This extension use l10n (localisation) and is currently available in : 
+- English *(en)*
+- French *(fr)*
 
 ## 😸 Maintainers
 
