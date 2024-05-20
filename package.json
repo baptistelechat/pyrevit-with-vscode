@@ -98,7 +98,9 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@vscode/l10n": "^0.0.18"
+    "@vscode/l10n": "^0.0.18",
+    "sharp": "^0.33.4",
+    "svgson": "^5.3.1"
   },
-  "packageManager": "pnpm@8.15.1"
+  "packageManager": "pnpm@9.1.1"
 }
