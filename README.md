@@ -1,11 +1,8 @@
-<h1 align="center">pyRevit with VSCode 🐍</h1>
+# <img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/main/src/lib/assets/img/logo/pyRevitWithVSCodeLogo_full.png"  height="150" alt="pyRevit with VSCode 🐍">
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/baptistelechat/pyrevit-with-vscode) ![GitHub License](https://img.shields.io/github/license/baptistelechat/pyrevit-with-vscode) [![GitHub latest commit](https://badgen.net/github/last-commit/baptistelechat/pyrevit-with-vscode)](https://github.com/baptistelechat/pyrevit-with-vscode/commit/main)
 
-<img src="https://raw.githubusercontent.com/baptistelechat/pyrevit-with-vscode/main/src/lib/assets/img/logo/pyRevitWithVSCodeLogo.png" height="150" align="right">
-
 A [Visual Studio Code](https://code.visualstudio.com/) extension to simplify the creation of Revit plug-ins using pyRevit.
-
 
 ## Features
 
