@@ -81,9 +81,9 @@
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
     "package": "pnpm dlx vsce package --no-dependencies",
-    "publish:patch": "pnpm version patch --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish patch --no-dependencies",
-    "publish:minor": "pnpm version minor --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish minor --no-dependencies",
-    "publish:major": "pnpm version major --no-commit --git-tag-version=false --message=\"\" && pnpm vsce publish major --no-dependencies"
+    "publish:patch": "pnpm dlx vsce publish patch --no-dependencies --message=\"🚀 (Publish) - Increment patch version\"",
+    "publish:minor": "pnpm dlx vsce publish minor --no-dependencies --message=\"🚀 (Publish) - Increment minor version\"",
+    "publish:major": "pnpm dlx vsce publish major --no-dependencies --message=\"🚀 (Publish) - Increment major version\""
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
@@ -99,5 +99,6 @@
   },
   "dependencies": {
     "@vscode/l10n": "^0.0.18"
-  }
+  },
+  "packageManager": "pnpm@8.15.1"
 }
