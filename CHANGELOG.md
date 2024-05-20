@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning].
 
 - / -->
 
-## [0.0.1] - 2024-05-20
+## [1.0.0] - 2024-05-20
 
 ### Added
 - 🛠️ Adding Setup:
