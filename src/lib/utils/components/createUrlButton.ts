@@ -140,18 +140,8 @@ const createUrlButton = async () => {
           const iconPath = path.join(buttonPath, "icon.png");
           const defaultIconPath = path.join(
             __dirname,
-            "..",
-            "..",
-            "..",
-            "..",
-            "src",
-            "lib",
-            "assets",
-            "img",
-            "pyRevitLogo",
-            "pyRevitLogo_black.png"
+            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
           );
-
           await selectIcon(iconPath, defaultIconPath, 96, 96);
 
           // const darkIconPath = path.join(buttonPath, "icon.dark.png");

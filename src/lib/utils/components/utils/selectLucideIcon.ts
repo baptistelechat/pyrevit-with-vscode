@@ -3,7 +3,10 @@ import * as path from "path";
 import * as vscode from "vscode";
 
 const selectLucideIcon = async (): Promise<string | undefined> => {
-  const lucideIconsPath = path.join(__dirname, "../../../assets/img/lucide");
+  const lucideIconsPath = path.join(
+    __dirname,
+    "../../../../../src/lib/assets/img/lucide"
+  );
 
   const lucideIconsUri = vscode.Uri.file(lucideIconsPath);
 

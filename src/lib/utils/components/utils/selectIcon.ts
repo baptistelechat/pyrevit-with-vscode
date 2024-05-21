@@ -53,12 +53,12 @@ const selectIcon = async (
         }
         break;
       case "🎨 Lucide Icons":
-        selectLucideIcon().then((iconPath) => {
-          if (iconPath) {
-            showInformationMessage(svgPath);
-            // copyFile(defaultIconPath, iconPath);
+        await selectLucideIcon().then((svgPath) => {
+          if (svgPath) {
+            convertSvgToPng(svgPath, iconPath, height, width);
+          } else {
+            showErrorMessage("Un erreur est survenue");
           }
-          showErrorMessage("Un erreur est survenue");
         });
         break;
     }

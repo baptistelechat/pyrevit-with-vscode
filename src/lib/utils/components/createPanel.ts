@@ -97,16 +97,7 @@ const createPanel = async () => {
         const iconPath = path.join(buttonPath, "icon.png");
         const defaultIconPath = path.join(
           __dirname,
-          "..",
-          "..",
-          "..",
-          "..",
-          "src",
-          "lib",
-          "assets",
-          "img",
-          "pyRevitLogo",
-          "pyRevitLogo_black.png"
+          "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
         );
         copyFile(defaultIconPath, iconPath);
 
