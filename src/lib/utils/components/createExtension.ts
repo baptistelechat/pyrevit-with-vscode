@@ -2,10 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showInformationMessage } from "../showMessage";
-import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
-import selectIcon from "./selectIcon";
+import selectIcon from "./utils/selectIcon";
 
 const { t } = vscode.l10n;
 

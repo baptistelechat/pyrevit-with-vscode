@@ -2,11 +2,11 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
-import selectIcon from "./selectIcon";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
+import selectIcon from "./utils/selectIcon";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 

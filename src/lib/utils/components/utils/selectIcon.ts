@@ -2,9 +2,10 @@ import * as fs from "fs";
 import * as path from "path";
 import sharp from "sharp";
 import * as vscode from "vscode";
-import { showInformationMessage } from "../showMessage";
-import convertSvgToPng from "./utils/convertSvgToPng";
-import copyFile from "./utils/copyFile";
+import { showErrorMessage, showInformationMessage } from "../../showMessage";
+import convertSvgToPng from "./convertSvgToPng";
+import copyFile from "./copyFile";
+import selectLucideIcon from "./selectLucideIcon";
 
 const { t } = vscode.l10n;
 
@@ -52,8 +53,13 @@ const selectIcon = async (
         }
         break;
       case "🎨 Lucide Icons":
-        showInformationMessage("⌛ Coming soon, default icon added...");
-        copyFile(defaultIconPath, iconPath);
+        selectLucideIcon().then((iconPath) => {
+          if (iconPath) {
+            showInformationMessage(svgPath);
+            // copyFile(defaultIconPath, iconPath);
+          }
+          showErrorMessage("Un erreur est survenue");
+        });
         break;
     }
   }
