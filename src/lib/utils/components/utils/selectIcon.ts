@@ -2,7 +2,6 @@ import * as fs from "fs";
 import * as path from "path";
 import sharp from "sharp";
 import * as vscode from "vscode";
-import { showErrorMessage, showInformationMessage } from "../../showMessage";
 import convertSvgToPng from "./convertSvgToPng";
 import copyFile from "./copyFile";
 import selectLucideIcon from "./selectLucideIcon";
@@ -18,7 +17,7 @@ const selectIcon = async (
   const options = [
     t("🐍 Default icon"),
     t("💻 Load from my computer"),
-    "🎨 Lucide Icons",
+    "⭕ Lucide Icons",
   ];
 
   const selectedOption = await vscode.window.showQuickPick(options, {
@@ -52,12 +51,10 @@ const selectIcon = async (
           await convertSvgToPng(svgPath, iconPath, height, width);
         }
         break;
-      case "🎨 Lucide Icons":
-        await selectLucideIcon().then((svgPath) => {
+      case "⭕ Lucide Icons":
+        await selectLucideIcon().then(async (svgPath) => {
           if (svgPath) {
-            convertSvgToPng(svgPath, iconPath, height, width);
-          } else {
-            showErrorMessage("Un erreur est survenue");
+            await convertSvgToPng(svgPath, iconPath, height, width);
           }
         });
         break;

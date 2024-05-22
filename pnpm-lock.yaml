@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@types/tinycolor2':
+        specifier: ^1.4.6
+        version: 1.4.6
       '@vscode/l10n':
         specifier: ^0.0.18
         version: 0.0.18
@@ -17,6 +20,9 @@ importers:
       svg2png:
         specifier: ^4.1.1
         version: 4.1.1
+      tinycolor2:
+        specifier: ^1.6.0
+        version: 1.6.0
     devDependencies:
       '@types/mocha':
         specifier: ^10.0.6
@@ -289,6 +295,9 @@ packages:
 
   '@types/svg2png@4.1.5':
     resolution: {integrity: sha512-Dxqpt9o1aemjF50g362xIyASCbe3YRqfOeEgxG0MmzUFMaZLXtQ5jadwbSUvcu53d69ICHxpsjl6uhU+aXOBeQ==}
+
+  '@types/tinycolor2@1.4.6':
+    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
   '@types/vscode@1.88.0':
     resolution: {integrity: sha512-rWY+Bs6j/f1lvr8jqZTyp5arRMfovdxolcqGi+//+cPDOh8SBvzXH90e7BiSXct5HJ9HGW6jATchbRTpTJpEkw==}
@@ -1473,6 +1482,9 @@ packages:
   throttleit@1.0.1:
     resolution: {integrity: sha512-vDZpf9Chs9mAdfY046mcPt8fg5QSZr37hEH4TXYBnDF+izxgrbRGUAAaBvIk/fJm9aOFCGFd1EsNg5AZCbnQCQ==}
 
+  tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
+
   to-regex-range@5.0.1:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
@@ -1861,6 +1873,8 @@ snapshots:
   '@types/svg2png@4.1.5':
     dependencies:
       '@types/node': 18.19.31
+
+  '@types/tinycolor2@1.4.6': {}
 
   '@types/vscode@1.88.0': {}
 
@@ -3186,6 +3200,8 @@ snapshots:
   text-table@0.2.0: {}
 
   throttleit@1.0.1: {}
+
+  tinycolor2@1.6.0: {}
 
   to-regex-range@5.0.1:
     dependencies:

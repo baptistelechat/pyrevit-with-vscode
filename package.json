@@ -99,9 +99,11 @@
     "typescript": "^5.4.5"
   },
   "dependencies": {
+    "@types/tinycolor2": "^1.4.6",
     "@vscode/l10n": "^0.0.18",
     "sharp": "^0.33.4",
-    "svg2png": "^4.1.1"
+    "svg2png": "^4.1.1",
+    "tinycolor2": "^1.6.0"
   },
   "packageManager": "pnpm@9.1.1"
 }
