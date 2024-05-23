@@ -2,11 +2,11 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
-import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
+import selectIcon from "./utils/selectIcon";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 
@@ -140,18 +140,9 @@ const createUrlButton = async () => {
           const iconPath = path.join(buttonPath, "icon.png");
           const defaultIconPath = path.join(
             __dirname,
-            "..",
-            "..",
-            "..",
-            "..",
-            "src",
-            "lib",
-            "assets",
-            "img",
-            "pyRevitLogo",
-            "pyRevitLogo_black.png"
+            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
           );
-          copyFile(defaultIconPath, iconPath);
+          await selectIcon(iconPath, defaultIconPath, 96, 96);
 
           // const darkIconPath = path.join(buttonPath, "icon.dark.png");
           // const defaultDarkIconPath = path.join(

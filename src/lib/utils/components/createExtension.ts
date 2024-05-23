@@ -2,9 +2,9 @@ import * as path from "path";
 import * as vscode from "vscode";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showInformationMessage } from "../showMessage";
-import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
+import selectIcon from "./utils/selectIcon";
 
 const { t } = vscode.l10n;
 
@@ -51,18 +51,9 @@ async function createExtension() {
             const iconPath = path.join(buttonPath, "icon.png");
             const defaultIconPath = path.join(
               __dirname,
-              "..",
-              "..",
-              "..",
-              "..",
-              "src",
-              "lib",
-              "assets",
-              "img",
-              "pyRevitLogo",
-              "pyRevitLogo_black.png"
+              "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
             );
-            copyFile(defaultIconPath, iconPath);
+            await selectIcon(iconPath, defaultIconPath, 96, 96);
 
             // const darkIconPath = path.join(buttonPath, "icon.dark.png");
             // const defaultDarkIconPath = path.join(
