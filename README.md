@@ -112,6 +112,10 @@ Create a new pyRevit extension by selecting this option. You will be prompt for:
 2. 📁 Enter the name of the tab
 3. 📦 Enter the name of the panel
 4. ✨ Enter the name of the button
+5. 🎨 Select an icon option:
+   1. 🐍 Default icon
+   2. 💻 Load from user computer (png or svg are accepted)
+   3. ⭕ Lucide Icons (you will be prompt for "🎨 Enter a color" and select a icon from a list of +1400 icons)
 
 A new extension will be created in the workspace with the following structure:
 
@@ -238,6 +242,10 @@ Create a new push button in existing panel by selecting this option. You will be
 2. 📁 Select a tab
 3. 📦 Select a panel
 4. ✨ Enter the name of the button
+5. 🎨 Select an icon option:
+   1. 🐍 Default icon
+   2. 💻 Load from user computer (png or svg are accepted)
+   3. ⭕ Lucide Icons (you will be prompt for "🎨 Enter a color" and select a icon from a list of +1400 icons)
 
 A new push button will be created in the workspace with the following structure:
 
@@ -282,6 +290,10 @@ Create a new url button in existing panel by selecting this option. You will be 
 3. 📦 Select a panel
 4. ✨ Enter the name of the button
 5. 🔗 Enter an URL
+5. 🎨 Select an icon option:
+   1. 🐍 Default icon
+   2. 💻 Load from user computer (png or svg are accepted)
+   3. ⭕ Lucide Icons (you will be prompt for "🎨 Enter a color" and select a icon from a list of +1400 icons)
 
 A new url button will be created in the workspace with the following structure with the given url:
 
@@ -312,17 +324,16 @@ This extension provides 2 templates for easily starting a new python script:
 - [📝 pyrvt (pyRevit Full Template)](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-pyrvt-pyrevit-full-template)
 - [📝 pyrvtmin (pyRevit Min Template)](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-pyrvtmin-pyrevit-min-template)
 
-
 > 📅 The date value is automatically set to the current date.
 
 #### 📝 pyrvt (pyRevit Full Template)
 
-This is the most comprehensive and complete template provided by the pyRevit-with-VSCode extension. It is ideal for beginners in the creation of pyRevit extensions. You can provide information using tabs to move the cursor: 
+This is the most comprehensive and complete template provided by the pyRevit-with-VSCode extension. It is ideal for beginners in the creation of pyRevit extensions. You can provide information using tabs to move the cursor:
 
-1. Title *(string)*
-2. Author *(string)*
-3. Minimum Revit version allow *(number: 2020, 2021, 2022, 2023 or 2024)*
-4. Maximum Revit version allow *(number: 2024, 2023, 2022, 2021 or 2020)*
+1. Title _(string)_
+2. Author _(string)_
+3. Minimum Revit version allow _(number: 2020, 2021, 2022, 2023 or 2024)_
+4. Maximum Revit version allow _(number: 2024, 2023, 2022, 2021 or 2020)_
 
 "0$" marks the location of your cursor after filling in the previous options.
 
@@ -345,7 +356,7 @@ Last update:
 - [19.05.2024] - 1.0 RELEASE
 _____________________________________________________________________
 To-Do:
-- 
+-
 _____________________________________________________________________
 Author: ${2:John Doe}""" # Button Description shown in Revit UI
 
@@ -437,12 +448,13 @@ if __name__ == '__main__':
     print('-' * 50)
     print(':page_facing_up: Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.')
 ```
+
 #### 📝 pyrvtmin (pyRevit Min Template)
 
-This is minimal template provided by the pyRevit-with-VSCode extension. It is ideal for user that master the the creation of pyRevit extensions. You can provides: 
+This is minimal template provided by the pyRevit-with-VSCode extension. It is ideal for user that master the the creation of pyRevit extensions. You can provides:
 
-1. Title *(string)*
-2. Author *(string)*
+1. Title _(string)_
+2. Author _(string)_
 
 "0$" marks the location of your cursor after filling in the previous options.
 
@@ -465,7 +477,7 @@ Last update:
 - [19.05.2024] - 1.0 RELEASE
 _____________________________________________________________________
 To-Do:
-- 
+-
 _____________________________________________________________________
 Author: ${2:John Doe}"""
 
@@ -509,9 +521,10 @@ if __name__ == '__main__':
 
 ## 🔄 Translation
 
-This extension use l10n (localisation) and is currently available in: 
-- English *(en)*
-- French *(fr)*
+This extension use l10n (localisation) and is currently available in:
+
+- English _(en)_
+- French _(fr)_
 
 ## 😸 Maintainers
 

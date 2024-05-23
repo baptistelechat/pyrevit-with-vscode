@@ -21,7 +21,7 @@ const selectIcon = async (
   ];
 
   const selectedOption = await vscode.window.showQuickPick(options, {
-    placeHolder: t("🎨 Select a icon option"),
+    placeHolder: t("🎨 Select an icon option"),
   });
 
   if (selectedOption) {

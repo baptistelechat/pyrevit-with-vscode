@@ -61,7 +61,7 @@ const selectLucideIcon = async (): Promise<string | undefined> => {
   return new Promise((resolve, reject) => {
     vscode.window
       .showQuickPick(items, {
-        placeHolder: t("⭕ Select a icon"),
+        placeHolder: t("⭕ Select an icon"),
       })
       .then((selectedIcon) => {
         if (selectedIcon) {
