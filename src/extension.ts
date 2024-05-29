@@ -8,8 +8,6 @@ import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
 import pyRevitPath from "./lib/constants/pyRevitPath";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
-import replaceAuthorInSnippets from "./lib/utils/replaceAuthorInSnippets";
-import setAuthor from "./lib/utils/setAuthor";
 import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
 import checkPythonExtension from "./lib/utils/setup/checkPythonExtension";
 import checkPythonInstallation from "./lib/utils/setup/checkPythonInstallation";
