@@ -9,12 +9,23 @@ and this project adheres to [Semantic Versioning].
 
 - / -->
 
+## [1.1.1] - 2024-05-29
+
+### Changed
+
+- Minor changes into snippets
+
+### Fixed
+
+- Commands and snippets are not found after publishing extension because PNPM is not supported by VSCE package
+- Change package manager for YARN instead PNPM
+
 ## [1.1.0] - 2024-05-23
 
 ### Added
 
 - Added +1400 icons from the Lucide icon library
-- Added the possibility of changing the Lucide icon color. 
+- Added the possibility of changing the Lucide icon color.
 
 ### Changed
 
@@ -54,5 +65,6 @@ and this project adheres to [Semantic Versioning].
 <!-- Versions -->
 
 [unreleased]: https://github.com/Author/Repository/compare/v0.0.2...HEAD
-[0.0.2]: https://github.com/Author/Repository/compare/v0.0.1...v0.0.2
-[0.0.1]: https://github.com/Author/Repository/releases/tag/v0.0.1
+[1.1.1]: https://github.com/baptistelechat/pyrevit-with-vscode/releases/tag/v1.1.1
+[1.1.0]: https://github.com/baptistelechat/pyrevit-with-vscode/releases/tag/v1.1.0
+[1.0.0]: https://github.com/baptistelechat/pyrevit-with-vscode/releases/tag/v1.0.0
