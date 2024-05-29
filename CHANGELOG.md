@@ -17,7 +17,8 @@ and this project adheres to [Semantic Versioning].
 
 ### Fixed
 
-- Commands and snippets are not found after publishing extension
+- Commands and snippets are not found after publishing extension because PNPM is not supported by VSCE package
+- Change package manager for NPM instead PNPM
 
 ## [1.1.0] - 2024-05-23
 

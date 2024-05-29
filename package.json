@@ -80,10 +80,10 @@
     "pretest": "pnpm run compile && pnpm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "pnpm dlx vsce package --no-dependencies",
-    "publish:patch": "pnpm dlx vsce publish patch --no-dependencies --message=\"🚀 (Publish) - Increment patch version\"",
-    "publish:minor": "pnpm dlx vsce publish minor --no-dependencies --message=\"🚀 (Publish) - Increment minor version\"",
-    "publish:major": "pnpm dlx vsce publish major --no-dependencies --message=\"🚀 (Publish) - Increment major version\""
+    "package": "npx vsce package",
+    "publish:patch": "npx vsce publish patch --message=\"🚀 (Publish) - Increment patch version\"",
+    "publish:minor": "npx vsce publish minor --message=\"🚀 (Publish) - Increment minor version\"",
+    "publish:major": "npx vsce publish major --message=\"🚀 (Publish) - Increment major version\""
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
@@ -105,5 +105,5 @@
     "svg2png": "^4.1.1",
     "tinycolor2": "^1.6.0"
   },
-  "packageManager": "pnpm@9.1.1"
+  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"
 }
