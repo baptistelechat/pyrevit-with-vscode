@@ -74,16 +74,16 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "pnpm run compile && pnpm run lint",
+    "pretest": "yarn run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
-    "package": "npx vsce package",
-    "publish:patch": "npx vsce publish patch --message=\"🚀 (Publish) - Increment patch version\"",
-    "publish:minor": "npx vsce publish minor --message=\"🚀 (Publish) - Increment minor version\"",
-    "publish:major": "npx vsce publish major --message=\"🚀 (Publish) - Increment major version\""
+    "package": "vsce package",
+    "publish:patch": "vsce publish patch --message=\"🚀 (Publish) - Increment patch version\"",
+    "publish:minor": "vsce publish minor --message=\"🚀 (Publish) - Increment minor version\"",
+    "publish:major": "vsce publish major --message=\"🚀 (Publish) - Increment major version\""
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",
@@ -105,5 +105,5 @@
     "svg2png": "^4.1.1",
     "tinycolor2": "^1.6.0"
   },
-  "packageManager": "pnpm@8.15.4+sha256.cea6d0bdf2de3a0549582da3983c70c92ffc577ff4410cbf190817ddc35137c2"
+  "packageManager": "yarn@1.22.22"
 }
