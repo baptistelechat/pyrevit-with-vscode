@@ -2,7 +2,7 @@
   "name": "pyrevit-with-vscode",
   "displayName": "pyRevit with VSCode",
   "description": "A VS Code extension to simplify the creation of Revit plug-ins using pyRevit.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
