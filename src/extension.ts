@@ -4,8 +4,7 @@ import * as vscode from "vscode";
 import components from "./lib/commands/components";
 import docs from "./lib/commands/docs";
 import setup from "./lib/commands/setup";
-import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
-import pyRevitPath from "./lib/constants/pyRevitPath";
+import { isPyRevitInstalled } from "./lib/constants/pyRevitPaths";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
 import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
@@ -41,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Check if pyRevit is installed
-    if (!fs.existsSync(pyRevitPath) || !fs.existsSync(pyRevitMasterPath)) {
+    if (!isPyRevitInstalled()) {
       checkPyRevitLib();
     }
 

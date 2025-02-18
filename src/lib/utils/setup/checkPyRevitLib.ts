@@ -1,14 +1,12 @@
-import * as fs from "fs";
 import * as vscode from "vscode";
-import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
-import pyRevitPath from "../../constants/pyRevitPath";
+import { isPyRevitInstalled } from "../../constants/pyRevitPaths";
 import { showInformationMessage } from "../showMessage";
 
 const { t } = vscode.l10n;
 
 const checkPyRevitLib = () => {
   // Check if pyRevit is installed
-  if (!fs.existsSync(pyRevitPath) || !fs.existsSync(pyRevitMasterPath)) {
+  if (!isPyRevitInstalled()) {
     vscode.window
       .showErrorMessage(
         t(
