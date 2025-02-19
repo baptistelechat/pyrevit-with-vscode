@@ -4,8 +4,8 @@ import checkPyRevitLib from "../utils/setup/checkPyRevitLib";
 import checkPythonExtension from "../utils/setup/checkPythonExtension";
 import checkPythonInstallation from "../utils/setup/checkPythonInstallation";
 import checkRevitApiStubs from "../utils/setup/checkRevitApiStubs";
-import updateVscSettings from "../utils/setup/updateVscSettings";
 import { updateRevitApiStubs } from "../utils/setup/updateRevitApiStubs";
+import updateVscSettings from "../utils/setup/updateVscSettings";
 
 const { t } = vscode.l10n;
 
@@ -19,7 +19,6 @@ const setup = vscode.commands.registerCommand(
         t("🧩 Install Python extension"),
         t("📕 Install Revit API Stubs"),
         t("📕 Install pyRevit"),
-        t("✨ Update Revit API Stubs"),
         t('📝 Update "settings.json"'),
       ];
 
@@ -41,11 +40,8 @@ const setup = vscode.commands.registerCommand(
           case t("📕 Install pyRevit"):
             checkPyRevitLib();
             break;
-          case t("✨ Update Revit API Stubs"):
-            updateRevitApiStubs();
-            updateVscSettings();
-            break;
           case t('📝 Update "settings.json"'):
+            updateRevitApiStubs();
             updateVscSettings();
             break;
         }
