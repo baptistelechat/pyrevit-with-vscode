@@ -131,6 +131,13 @@ const createPulldown = async () => {
 
           createDirectory(pulldownPath);
 
+          const iconPath = path.join(pulldownPath, "icon.png");
+          const defaultIconPath = path.join(
+            __dirname,
+            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
+          );
+          copyFile(defaultIconPath, iconPath);
+
           Array.from({ length: 3 }, (_, i) => {
             const buttonName = `Hello World ${i + 1}`;
             const buttonPath = path.join(
@@ -144,10 +151,6 @@ const createPulldown = async () => {
             createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
             const iconPath = path.join(buttonPath, "icon.png");
-            const defaultIconPath = path.join(
-              __dirname,
-              "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
-            );
             copyFile(defaultIconPath, iconPath);
           });
 
