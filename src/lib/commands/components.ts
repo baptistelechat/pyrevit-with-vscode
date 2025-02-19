@@ -2,10 +2,11 @@ import * as vscode from "vscode";
 import checkOs from "../utils/checkOs";
 import createExtension from "../utils/components/createExtension";
 import createPanel from "../utils/components/createPanel";
+import createPulldown from "../utils/components/createPulldown";
 import createPushButton from "../utils/components/createPushButton";
+import createStack from "../utils/components/createStack";
 import createTab from "../utils/components/createTab";
 import createUrlButton from "../utils/components/createUrlButton";
-import createStack from "../utils/components/createStack";
 
 const { t } = vscode.l10n;
 
@@ -19,6 +20,7 @@ const components = vscode.commands.registerCommand(
         t("📁 Tab"),
         t("📦 Panel"),
         t("🗃️ Stack"),
+        t("⬇️ Pulldown"),
         t("✨ Push Button"),
         t("🔗 Url Button"),
       ];
@@ -40,6 +42,9 @@ const components = vscode.commands.registerCommand(
             break;
           case t("🗃️ Stack"):
             createStack();
+            break;
+          case t("⬇️ Pulldown"):
+            createPulldown();
             break;
           case t("✨ Push Button"):
             createPushButton();
