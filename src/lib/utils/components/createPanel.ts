@@ -101,22 +101,6 @@ const createPanel = async () => {
         );
         copyFile(defaultIconPath, iconPath);
 
-        // const darkIconPath = path.join(buttonPath, "icon.dark.png");
-        // const defaultDarkIconPath = path.join(
-        //   __dirname,
-        //   "..",
-        //   "..",
-        //   "..",
-        //   "..",
-        //   "src",
-        //   "lib",
-        //   "assets",
-        //   "img",
-        // "pyRevitLogo",
-        //   "pyRevitLogo_white.png"
-        // );
-        // copyFile(defaultDarkIconPath, darkIconPath);
-
         showInformationMessage("Panel created successfully");
       }
     }

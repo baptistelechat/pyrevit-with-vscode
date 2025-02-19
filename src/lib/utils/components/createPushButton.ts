@@ -141,22 +141,6 @@ const createPushButton = async () => {
           );
           await selectIcon(iconPath, defaultIconPath, 96, 96);
 
-          // const darkIconPath = path.join(buttonPath, "icon.dark.png");
-          // const defaultDarkIconPath = path.join(
-          //   __dirname,
-          //   "..",
-          //   "..",
-          //   "..",
-          //   "..",
-          //   "src",
-          //   "lib",
-          //   "assets",
-          //   "img",
-          // "pyRevitLogo",
-          //   "pyRevitLogo_white.png"
-          // );
-          // copyFile(defaultDarkIconPath, darkIconPath);
-
           showInformationMessage("PushButton created successfully");
         }
       }

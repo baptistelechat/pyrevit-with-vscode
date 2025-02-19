@@ -1,18 +1,19 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
+import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
-import selectIcon from "./utils/selectIcon";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 
 const { t } = vscode.l10n;
 
-const createUrlButton = async () => {
+const createStack = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
     showErrorMessage("No workspace folder found.");
@@ -118,37 +119,37 @@ const createUrlButton = async () => {
       }
 
       if (typeof selectedPanelPath === "string") {
-        const buttonName = await vscode.window.showInputBox({
-          prompt: t("✨ Enter the name of the button"),
+        const stackName = await vscode.window.showInputBox({
+          prompt: t("🗃️ Enter the name of the stack"),
         });
 
-        const url = await vscode.window.showInputBox({
-          prompt: t("🔗 Enter an URL"),
-        });
+        if (stackName) {
+          const stackPath = path.join(selectedPanelPath, `${stackName}.stack`);
 
-        if (buttonName && url) {
-          const buttonPath = path.join(
-            selectedPanelPath,
-            `${buttonName}.urlbutton`
-          );
+          createDirectory(stackPath);
 
-          createDirectory(buttonPath);
+          Array.from({ length: 3 }, (_, i) => {
+            const buttonName = `Hello World ${i + 1}`;
+            const buttonPath = path.join(stackPath, `${buttonName}.pushbutton`);
 
-          const scriptPath = path.join(buttonPath, "bundle.yaml");
-          createFileWithContent(scriptPath, `hyperlink: "${url}"`);
+            createDirectory(buttonPath);
 
-          const iconPath = path.join(buttonPath, "icon.png");
-          const defaultIconPath = path.join(
-            __dirname,
-            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
-          );
-          await selectIcon(iconPath, defaultIconPath, 96, 96);
+            const scriptPath = path.join(buttonPath, "script.py");
+            createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
-          showInformationMessage("PushButton created successfully");
+            const iconPath = path.join(buttonPath, "icon.png");
+            const defaultIconPath = path.join(
+              __dirname,
+              "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
+            );
+            copyFile(defaultIconPath, iconPath);
+          });
+
+          showInformationMessage("Stack created successfully");
         }
       }
     }
   }
 };
 
-export default createUrlButton;
+export default createStack;

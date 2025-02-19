@@ -5,6 +5,7 @@ import createPanel from "../utils/components/createPanel";
 import createPushButton from "../utils/components/createPushButton";
 import createTab from "../utils/components/createTab";
 import createUrlButton from "../utils/components/createUrlButton";
+import createStack from "../utils/components/createStack";
 
 const { t } = vscode.l10n;
 
@@ -17,6 +18,7 @@ const components = vscode.commands.registerCommand(
         "💼 Extension",
         t("📁 Tab"),
         t("📦 Panel"),
+        t("🗃️ Stack"),
         t("✨ Push Button"),
         t("🔗 Url Button"),
       ];
@@ -35,6 +37,9 @@ const components = vscode.commands.registerCommand(
             break;
           case t("📦 Panel"):
             createPanel();
+            break;
+          case t("🗃️ Stack"):
+            createStack();
             break;
           case t("✨ Push Button"):
             createPushButton();
