@@ -6,7 +6,8 @@ export const appdataPyRevitMasterPath = path.join(
   os.homedir(),
   "AppData",
   "Roaming",
-  "pyRevit-Master"
+  "pyRevit-Master",
+  "pyrevitlib"
 );
 
 const appdataPyRevitPath = path.join(
@@ -18,7 +19,8 @@ const appdataPyRevitPath = path.join(
 
 export const programFilesPyRevitMasterPath = path.join(
   process.env.ProgramFiles || "C:\\Program Files",
-  "pyRevit-Master"
+  "pyRevit-Master",
+  "pyrevitlib"
 );
 
 const programDataPyRevitPath = path.join(
