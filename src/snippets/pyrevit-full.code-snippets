@@ -45,7 +45,7 @@
       "from Autodesk.Revit.DB import * # type: ignore # Import everything from DB or Import only classes that are used. (from Autodesk.Revit.DB import Transaction, FilteredElementCollector)",
       "",
       "# pyRevit",
-      "from pyrevit import revit, forms, script # type: ignore # import pyRevit modules.",
+      "from pyrevit import revit, forms, script # import pyRevit modules.",
       "",
       "# Custom Imports",
       "# from Snippets._selection import get_selected_elements # lib import",
