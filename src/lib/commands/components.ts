@@ -7,6 +7,7 @@ import createPushButton from "../utils/components/createPushButton";
 import createStack from "../utils/components/createStack";
 import createTab from "../utils/components/createTab";
 import createUrlButton from "../utils/components/createUrlButton";
+import createSplitPushButton from "../utils/components/createSplitPushButton";
 
 const { t } = vscode.l10n;
 
@@ -20,7 +21,8 @@ const components = vscode.commands.registerCommand(
         t("📁 Tab"),
         t("📦 Panel"),
         t("🗃️ Stack"),
-        t("⬇️ Pulldown"),
+        t("📂 Split Push Button"),
+        t("⬇️ Pull Down Button"),
         t("✨ Push Button"),
         t("🔗 Url Button"),
       ];
@@ -43,7 +45,10 @@ const components = vscode.commands.registerCommand(
           case t("🗃️ Stack"):
             createStack();
             break;
-          case t("⬇️ Pulldown"):
+          case t("📂 Split Push Button"):
+            createSplitPushButton();
+            break;
+          case t("⬇️ Pull Down Button"):
             createPulldown();
             break;
           case t("✨ Push Button"):

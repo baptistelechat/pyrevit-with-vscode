@@ -63,6 +63,11 @@ const updateMaterialIconsConfig = async () => {
       color: materialPalette["cyan-700"],
       emoji: "🗃️",
     },
+    splitpushbutton: {
+      base: "plugin",
+      color: materialPalette["pink-300"],
+      emoji: "📂",
+    },
     pulldown: {
       base: "element",
       color: materialPalette["brown-500"],
@@ -94,7 +99,7 @@ const updateMaterialIconsConfig = async () => {
 
   projectDirs.forEach((dir) => {
     const match = dir.match(
-      /.?(extension|tab|panel|stack|pulldown|pushbutton|urlbutton)$/
+      /.?(extension|tab|panel|stack|splitpushbutton|pulldown|pushbutton|urlbutton)$/
     );
     if (!match) {
       return;

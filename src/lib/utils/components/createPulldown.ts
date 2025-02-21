@@ -124,7 +124,7 @@ const createPulldown = async () => {
 
       if (typeof selectedPanelPath === "string") {
         const pulldownName = await vscode.window.showInputBox({
-          prompt: t("⬇️ Enter the name of the pullldown"),
+          prompt: t("⬇️ Enter the name of the button"),
         });
 
         if (pulldownName) {
