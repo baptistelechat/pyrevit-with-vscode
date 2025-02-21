@@ -1,5 +1,9 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import {
+  defaultDarkIconPath,
+  defaultLightIconPath,
+} from "../../constants/defaultIconPath";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
@@ -61,11 +65,10 @@ const createTab = async () => {
       createFileWithContent(scriptPath, defaultPyRevitScript("Hello World"));
 
       const iconPath = path.join(buttonPath, "icon.png");
-      const defaultIconPath = path.join(
-        __dirname,
-        "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
-      );
-      copyFile(defaultIconPath, iconPath);
+      const iconDarkPath = path.join(buttonPath, "icon.dark.png");
+
+      copyFile(defaultDarkIconPath, iconPath);
+      copyFile(defaultLightIconPath, iconDarkPath);
 
       showInformationMessage("Tab created successfully");
     }

@@ -9,6 +9,7 @@ import selectLucideIcon from "./selectLucideIcon";
 const { t } = vscode.l10n;
 
 const selectIcon = async (
+  theme: "dark" | "light",
   iconPath: string,
   defaultIconPath: string,
   height: number,
@@ -21,7 +22,9 @@ const selectIcon = async (
   ];
 
   const selectedOption = await vscode.window.showQuickPick(options, {
-    placeHolder: t("🎨 Select an icon option"),
+    placeHolder: t(
+      `🎨${theme === "light" ? "☀️" : "🌙"} Select a ${theme} theme icon option`
+    ),
   });
 
   if (selectedOption) {

@@ -1,5 +1,9 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import {
+  defaultDarkIconPath,
+  defaultLightIconPath,
+} from "../../constants/defaultIconPath";
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
@@ -132,11 +136,10 @@ const createPulldown = async () => {
           createDirectory(pulldownPath);
 
           const iconPath = path.join(pulldownPath, "icon.png");
-          const defaultIconPath = path.join(
-            __dirname,
-            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
-          );
-          copyFile(defaultIconPath, iconPath);
+          const iconDarkPath = path.join(pulldownPath, "icon.dark.png");
+
+          copyFile(defaultDarkIconPath, iconPath);
+          copyFile(defaultLightIconPath, iconDarkPath);
 
           Array.from({ length: 3 }, (_, i) => {
             const buttonName = `Hello World ${i + 1}`;
@@ -151,7 +154,10 @@ const createPulldown = async () => {
             createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
             const iconPath = path.join(buttonPath, "icon.png");
-            copyFile(defaultIconPath, iconPath);
+            const iconDarkPath = path.join(buttonPath, "icon.dark.png");
+
+            copyFile(defaultDarkIconPath, iconPath);
+            copyFile(defaultLightIconPath, iconDarkPath);
           });
 
           showInformationMessage("Pulldown created successfully");
