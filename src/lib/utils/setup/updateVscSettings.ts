@@ -1,5 +1,6 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import { ironPythonStubsPath } from "../../constants/ironPythonStubsPath";
 import {
   appdataPyRevitMasterPath,
   programFilesPyRevitMasterPath,
@@ -45,6 +46,7 @@ const updateVscSettings = async () => {
 
     newExtraPaths.push(appdataPyRevitMasterPath);
     newExtraPaths.push(programFilesPyRevitMasterPath);
+    newExtraPaths.push(ironPythonStubsPath);
 
     config.update(
       "python.analysis.extraPaths",

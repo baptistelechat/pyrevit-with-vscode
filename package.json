@@ -102,6 +102,7 @@
     "@types/tinycolor2": "^1.4.6",
     "@vscode/l10n": "^0.0.18",
     "sharp": "^0.33.4",
+    "simple-git": "^3.27.0",
     "svg2png": "^4.1.1",
     "tinycolor2": "^1.6.0"
   },
