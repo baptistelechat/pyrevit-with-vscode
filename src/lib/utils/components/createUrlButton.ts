@@ -1,5 +1,9 @@
 import * as path from "path";
 import * as vscode from "vscode";
+import {
+  defaultDarkIconPath,
+  defaultLightIconPath,
+} from "../../constants/defaultIconPath";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
 import createDirectory from "./utils/createDirectory";
@@ -119,7 +123,7 @@ const createUrlButton = async () => {
 
       if (typeof selectedPanelPath === "string") {
         const buttonName = await vscode.window.showInputBox({
-          prompt: t("✨ Enter the name of the button"),
+          prompt: t("🔗 Enter the name of the button"),
         });
 
         const url = await vscode.window.showInputBox({
@@ -138,29 +142,12 @@ const createUrlButton = async () => {
           createFileWithContent(scriptPath, `hyperlink: "${url}"`);
 
           const iconPath = path.join(buttonPath, "icon.png");
-          const defaultIconPath = path.join(
-            __dirname,
-            "../../../../src/lib/assets/img/pyRevitLogo/pyRevitLogo_black.png"
-          );
-          await selectIcon(iconPath, defaultIconPath, 96, 96);
+          await selectIcon("light", iconPath, defaultDarkIconPath, 96, 96);
 
-          // const darkIconPath = path.join(buttonPath, "icon.dark.png");
-          // const defaultDarkIconPath = path.join(
-          //   __dirname,
-          //   "..",
-          //   "..",
-          //   "..",
-          //   "..",
-          //   "src",
-          //   "lib",
-          //   "assets",
-          //   "img",
-          // "pyRevitLogo",
-          //   "pyRevitLogo_white.png"
-          // );
-          // copyFile(defaultDarkIconPath, darkIconPath);
+          const iconDarkPath = path.join(buttonPath, "icon.dark.png");
+          await selectIcon("dark", iconDarkPath, defaultLightIconPath, 96, 96);
 
-          showInformationMessage("PushButton created successfully");
+          showInformationMessage("UrlButton created successfully");
         }
       }
     }

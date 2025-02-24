@@ -4,6 +4,7 @@ import checkPyRevitLib from "../utils/setup/checkPyRevitLib";
 import checkPythonExtension from "../utils/setup/checkPythonExtension";
 import checkPythonInstallation from "../utils/setup/checkPythonInstallation";
 import checkRevitApiStubs from "../utils/setup/checkRevitApiStubs";
+import { updateRevitApiStubs } from "../utils/setup/updateRevitApiStubs";
 import updateVscSettings from "../utils/setup/updateVscSettings";
 
 const { t } = vscode.l10n;
@@ -40,6 +41,7 @@ const setup = vscode.commands.registerCommand(
             checkPyRevitLib();
             break;
           case t('📝 Update "settings.json"'):
+            updateRevitApiStubs();
             updateVscSettings();
             break;
         }

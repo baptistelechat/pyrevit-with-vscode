@@ -12,6 +12,7 @@ The pyRevit with VSCode extension includes useful features for developing pyRevi
 - [Access documentation](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-documentation)
 - [Create components](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-components)
 - [Use basic templates](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-snippets)
+- [Color the folders according to their name](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-material-icon-theme)
 
 ### 🛠️ Setup
 
@@ -46,7 +47,7 @@ Once installation is complete, VSCode may need to be restarted to reload all ext
 
 These 2 options check whether Revit API Stubs and pyRevit are installed on the user's computer.
 
-- If Revit API Stubs is not installed, you are invited to download it. The downloaded folder contains stubs from Revit 2020 to Revit 2024. After downloading, the folder is copied to %APPDATA%.
+- If Revit API Stubs is not installed, you are invited to download it. The downloaded folder contains stubs from Revit 2020 to Revit 2025 and ironpython-stubs. After downloading, the folder is copied to %APPDATA%.
 - If pyRevit is missing, you are invited to download it from the [official pyRevit repository](https://github.com/pyrevitlabs/pyRevit/releases).
 
 Once download and installation are complete, VSCode may need to be restarted to reload all extensions and settings.
@@ -55,7 +56,7 @@ Once download and installation are complete, VSCode may need to be restarted to 
 
 If you want autocomplete in your python files, you need Revit API Stubs, pyRevit and the correct configuration of your VSCode settings (settings.json).
 
-This option checks if "python.analysis.extraPaths" and "python.autoComplete.extraPaths" are configured in the VSCode settings. If the properties are empty, you are invited to select the desired Revit versions. Currently, you can choose from Revit 2020 to Revit 2024.
+This option checks if "python.analysis.extraPaths" and "python.autoComplete.extraPaths" are configured in the VSCode settings. If the properties are empty, you are invited to select the desired Revit versions. Currently, you can choose from Revit 2020 to Revit 2025.
 
 If autocomplete doesn't work, restart VSCode to reload all extensions and parameters.
 
@@ -99,6 +100,9 @@ A menu opens, showing a choice of options:
 - [💼 Extension](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-extension)
 - [📁 Tab](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-tab)
 - [📦 Panel](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-panel)
+- [🗃️ Stack](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-stack)
+- [📂 Split Push Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-split-push-button)
+- [⬇️ Pull Down Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-pull-down-button)
 - [✨ Push Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-push-button)
 - [🔗 Url Button](https://github.com/baptistelechat/pyrevit-with-vscode?tab=readme-ov-file#-url-button)
 
@@ -125,6 +129,7 @@ A new extension will be created in the workspace with the following structure:
    └─ [new_panel_name].panel
       └─ [new_push_button_name].pushbutton
          ├─ icon.png
+         ├─ icon.dark.png
          └─ script.py
 ```
 
@@ -163,11 +168,13 @@ A new tab will be created in the workspace with the following structure:
 │   └─ [existing_panel].panel
 │      └─ [existing_push_button].pushbutton
 │         ├─ icon.png
+│         ├─ icon.dark.png
 │         └─ script.py
 └─ [new_tab_name].tab
    └─ New Panel.panel
       └─ Hello World.pushbutton
          ├─ icon.png
+         ├─ icon.dark.png
          └─ script.py
 ```
 
@@ -207,14 +214,184 @@ A new panel will be created in the workspace with the following structure:
    ├─ [existing_panel].panel
    │  └─ [existing_push_button].pushbutton
    │     ├─ icon.png
+   │     ├─ icon.dark.png
    │     └─ script.py
    └─ [new_panel].panel
       └─ Hello World.pushbutton
          ├─ icon.png
+         ├─ icon.dark.png
          └─ script.py
 ```
 
 An Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = "Hello World"
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is Hello World Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("Hello World clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### 🗃️ Stack
+
+Create a new stack in existing panel by selecting this option. You will be prompt for:
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Select a panel
+4. 🗃️ Enter the name of the stack
+
+A new stack will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   ├─ [existing_panel].panel
+   │  └─ [existing_push_button].pushbutton
+   │     ├─ icon.png
+   │     ├─ icon.dark.png
+   │     └─ script.py
+   └─ [selected_panel].panel
+      └─ [new_stack_name].stack
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+            ├─ icon.png
+            ├─ icon.dark.png
+            └─ script.py
+```
+
+3 Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = "Hello World"
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is Hello World Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("Hello World clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### 📂 Split Push Button
+
+Create a new split push button in existing panel by selecting this option. You will be prompt for:
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Select a panel
+4. 📂 Enter the name of the button
+
+A new split push button will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   ├─ [existing_panel].panel
+   │  └─ [existing_push_button].pushbutton
+   │     ├─ icon.png
+   │     ├─ icon.dark.png
+   │     └─ script.py
+   └─ [selected_panel].panel
+      └─ [new_split_push_button_name].splitpushbutton
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+            ├─ icon.png
+            ├─ icon.dark.png
+            └─ script.py
+```
+
+3 Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
+
+```python
+# script.py
+# --------------------------------------------------
+# -*- coding: utf-8 -*-
+__title__ = "Hello World"
+__author__ = "[pyrevit-with-vscode.author]"
+__doc__ = """This is Hello World Button.
+Click on it see what happens..."""
+
+if __name__ == '__main__':
+    print("Hello World clicked!")
+
+# --------------------------------------------------
+# 💡 pyRevit with VSCode: Use pyrvt or pyrvtmin snippet
+# 📄 Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.
+
+```
+
+#### ⬇️ Pull Down Button
+
+Create a new pull down button in existing panel by selecting this option. You will be prompt for:
+
+1. 💼 Select an extension
+2. 📁 Select a tab
+3. 📦 Select a panel
+4. ⬇️ Enter the name of the button
+
+A new pull down button will be created in the workspace with the following structure:
+
+```
+[selected_extension].extension
+└─ [selected_tab].tab
+   ├─ [existing_panel].panel
+   │  └─ [existing_push_button].pushbutton
+   │     ├─ icon.png
+   │     ├─ icon.dark.png
+   │     └─ script.py
+   └─ [selected_panel].panel
+      └─ [new_pull_down_button].pulldown
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │   └─ script.py
+         └─ Hello World.pushbutton
+         │   ├─ icon.png
+         │   ├─ icon.dark.png
+         │  └─ script.py
+         ├─ icon.png
+         ├─ icon.dark.png
+         └─ script.py
+```
+
+3 Hello World button with default icon and a python script are added. The script provides the minimal code needed to work in Revit.
 
 ```python
 # script.py
@@ -255,9 +432,11 @@ A new push button will be created in the workspace with the following structure:
    └─ [selected_panel].panel
       ├─ [existing_push_button].pushbutton
       │  ├─ icon.png
+      │  ├─ icon.dark.png
       │  └─ script.py
       └─ [new_push_button_name].pushbutton
          ├─ icon.png
+         ├─ icon.dark.png
          └─ script.py
 ```
 
@@ -303,10 +482,12 @@ A new url button will be created in the workspace with the following structure w
    └─ [selected_panel].panel
       ├─ [existing_button].pushbutton
       │  ├─ icon.png
+      │  ├─ icon.dark.png
       │  └─ script.py
       └─ [new_url_button_name].urlbutton
          ├─ bundle.yaml
          └─ icon.png
+         └─ icon.dark.png
 ```
 
 A default icon and bundle file with given url are added.
@@ -339,10 +520,10 @@ This is the most comprehensive and complete template provided by the pyRevit-wit
 
 ```python
 # -*- coding: utf-8 -*-
-__title__ = "${1:title}" # Name of the button displayed in Revit UI
+__title__ = "title" # Name of the button displayed in Revit UI
 __doc__ = """
 Version = 1.0
-Date = 19.05.2024
+Date = 24.02.2025
 _____________________________________________________________________
 Description:
 This is a template file for pyRevit Scripts.
@@ -353,24 +534,24 @@ How-to:
 -> Make a change
 _____________________________________________________________________
 Last update:
-- [19.05.2024] - 1.0 RELEASE
+- [24.02.2025] - 1.0 RELEASE
 _____________________________________________________________________
 To-Do:
--
+- 
 _____________________________________________________________________
-Author: ${2:John Doe}""" # Button Description shown in Revit UI
+Author: John Doe""" # Button Description shown in Revit UI
 
 # EXTRA: You can remove them.
-__author__ = "${2:John Doe}" # Script's Author
+__author__ = "John Doe" # Script's Author
 __helpurl__ = "https://github.com/baptistelechat/pyrevit-with-vscode" # Link that can be opened with F1 when hovered over the tool in Revit UI.
-__min_revit_ver__ = ${3|2020,2021,2022,2023,2024|} # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
-__max_revit_ver__ = ${4|2024,2023,2022,2021,2020|} # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
+__min_revit_ver__ = 2020 # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
+__max_revit_ver__ = 2025 # Limit your Scripts to certain Revit versions if it's not compatible due to RevitAPI Changes.
 # __highlight__ = "new" # Button will have an orange dot + Description in Revit UI ("new" | "updated"
 # __context__ = [ "selection", "active-section-view"] # Make it available only if Active view is Section and something is Selected
 # __context__     = ["Walls", "Floors", "Roofs"] # Make your button available only when certain categories are selected. Or Revit/View Types.
 
-# 🔗 For extra bundle metadata : https://pyrevitlabs.notion.site/Bundle-Metadata-9fa4911c14fa49c48e715421400f1427
-# 🔗 For extra bundle context : https://pyrevitlabs.notion.site/Bundle-Context-630fa1f3611f4ee0aa15d290275e7ef3
+# 🔗 For extra bundle metadata: https://pyrevitlabs.notion.site/Bundle-Metadata-9fa4911c14fa49c48e715421400f1427
+# 🔗 For extra bundle context: https://pyrevitlabs.notion.site/Bundle-Context-630fa1f3611f4ee0aa15d290275e7ef3
 
 # ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
 # ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
@@ -381,7 +562,7 @@ import os, sys, math, datetime, time # Regular Imports
 from Autodesk.Revit.DB import * # Import everything from DB or Import only classes that are used. (from Autodesk.Revit.DB import Transaction, FilteredElementCollector)
 
 # pyRevit
-from pyrevit import revit, forms, script # type: ignore # import pyRevit modules.
+from pyrevit import revit, forms, script # import pyRevit modules.
 
 # Custom Imports
 # from Snippets._selection import get_selected_elements # lib import
@@ -390,15 +571,15 @@ from pyrevit import revit, forms, script # type: ignore # import pyRevit modules
 # .NET Imports
 import clr # Common Language Runtime. Makes .NET libraries accessible
 clr.AddReference("System") # Reference System.dll for import.
-from System.Collections.Generic import List # type: ignore # List<ElementType>() <- it's special type of list from .NET framework that RevitAPI requires
+from System.Collections.Generic import List # List<ElementType>() <- it's special type of list from .NET framework that RevitAPI requires
 
 # ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
 # ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
 #  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝ VARIABLES 📄
 # ==================================================
-doc   = __revit__.ActiveUIDocument.Document # type: ignore # Document class from RevitAPI that represents project. Used to Create, Delete, Modify and Query elements from the project.
-uidoc = __revit__.ActiveUIDocument # type: ignore # UIDocument class from RevitAPI that represents Revit project opened in the Revit UI.
-app   = __revit__.Application # type: ignore # Represents the Autodesk Revit Application, providing access to documents, options and other application wide data and settings.
+doc = revit.doc # Document class from RevitAPI that represents project. Used to Create, Delete, Modify and Query elements from the project.
+uidoc = revit.uidoc # UIDocument class from RevitAPI that represents Revit project opened in the Revit UI.
+app = revit.HOST_APP # Represents the Autodesk Revit Application, providing access to documents, options and other application wide data and settings.
 rvt_year = int(app.VersionNumber) # Get current revit version.
 PATH_SCRIPT = os.path.dirname(__file__) # Absolute path to the folder where script is placed.
 
@@ -426,8 +607,8 @@ logger = script.get_logger()
 # ╩ ╩╩ ╩╩╝╚╝ MAIN 🎯
 # ==================================================
 # 📝 For input display: https://pyrevitlabs.notion.site/Effective-Input-ea95e95282a24ba9b154ef88f4f8d056
-# 🎨 For output display : https://pyrevitlabs.notion.site/Effective-Output-43baf34d2ca247ada8e040bcb86613a2
-# 📊 For data visualization : https://pyrevitlabs.notion.site/Visualizing-Data-fd778a0b67354ff581aa340619b87803
+# 🎨 For output display: https://pyrevitlabs.notion.site/Effective-Output-43baf34d2ca247ada8e040bcb86613a2
+# 📊 For data visualization: https://pyrevitlabs.notion.site/Visualizing-Data-fd778a0b67354ff581aa340619b87803
 
 if __name__ == '__main__':
     # START CODE HERE
@@ -439,7 +620,7 @@ if __name__ == '__main__':
     t.Start() # <- Transaction Start 🔓
 
     #- CHANGES TO REVIT PROJECT HERE 🏡
-    $0
+    
 
     t.Commit() # <- Transaction End 🔒
 
@@ -460,10 +641,10 @@ This is minimal template provided by the pyRevit-with-VSCode extension. It is id
 
 ```python
 # -*- coding: utf-8 -*-
-__title__ = "${1:title}"
+__title__ = "title"
 __doc__ = """
 Version = 1.0
-Date = 19.05.2024
+Date = 24.02.2025
 _____________________________________________________________________
 Description:
 This is a template file for pyRevit Scripts.
@@ -474,12 +655,12 @@ How-to:
 -> Make a change
 _____________________________________________________________________
 Last update:
-- [19.05.2024] - 1.0 RELEASE
+- [24.02.2025] - 1.0 RELEASE
 _____________________________________________________________________
 To-Do:
--
+- 
 _____________________________________________________________________
-Author: ${2:John Doe}"""
+Author: John Doe"""
 
 # ╦╔╦╗╔═╗╔═╗╦═╗╔╦╗╔═╗
 # ║║║║╠═╝║ ║╠╦╝ ║ ╚═╗
@@ -489,20 +670,20 @@ Author: ${2:John Doe}"""
 from Autodesk.Revit.DB import *
 
 # pyRevit
-from pyrevit import revit, forms, script # type: ignore
+from pyrevit import revit, forms, script
 
 # .NET Imports
 import clr
 clr.AddReference("System")
-from System.Collections.Generic import List # type: ignore
+from System.Collections.Generic import List
 
 # ╦  ╦╔═╗╦═╗╦╔═╗╔╗ ╦  ╔═╗╔═╗
 # ╚╗╔╝╠═╣╠╦╝║╠═╣╠╩╗║  ║╣ ╚═╗
 #  ╚╝ ╩ ╩╩╚═╩╩ ╩╚═╝╩═╝╚═╝╚═╝ VARIABLES 📄
 # ==================================================
-doc   = __revit__.ActiveUIDocument.Document # type: ignore
-uidoc = __revit__.ActiveUIDocument # type: ignore
-app   = __revit__.Application # type: ignore
+doc = revit.doc
+uidoc = revit.uidoc
+app = revit.HOST_APP
 rvt_year = int(app.VersionNumber)
 
 logger = script.get_logger()
@@ -513,11 +694,34 @@ logger = script.get_logger()
 # ==================================================
 if __name__ == '__main__':
     # START CODE HERE
-    $0
+    
 
     print('-' * 50)
     print(':page_facing_up: Template has been developed by Baptiste LECHAT and inspired by Erik FRITS.')
 ```
+
+### 🎨 Material Icon Theme
+
+Our extension includes a custom configuration for the Material Icon Theme extension in Visual Studio Code, providing an enhanced visual experience with specific folder colors for different types of directories. This configuration helps you quickly identify folder types within your project.
+Folder Colors
+
+- Extension : blue-500
+- Tab : red-500
+- Panel : green-500
+- Stack : cyan-700
+- Split Push Button : pink-300
+- Pull Down Button : brown-500
+- Push Button : amber-600
+- URL Button : purple-600
+
+How to Use
+
+1. Install Material Icon Theme Extension: If not already installed, download the [Material Icon Theme extension](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) from the Visual Studio Code Marketplace.
+2. Activate Configuration: Our extension automatically applies the custom configuration when activated. You should see the folder colors updated immediately.
+3. Customize: You can further customize icons and colors by modifying the Material Icon Theme settings in your *settings.json* file.
+
+Once installation is complete, VSCode may need to be restarted to reload all extensions and settings.Once installation is complete, VSCode may need to be restarted to reload all extensions and settings.
+
 
 ## 🔄 Translation
 

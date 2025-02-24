@@ -1,6 +1,10 @@
 import * as path from "path";
 import * as vscode from "vscode";
-import pyRevitMasterPath from "../../constants/pyRevitMasterPath";
+import { ironPythonStubsPath } from "../../constants/ironPythonStubsPath";
+import {
+  appdataPyRevitMasterPath,
+  programFilesPyRevitMasterPath,
+} from "../../constants/pyRevitPaths";
 import revitApiStubsPath from "../../constants/revitApiStubsPath";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 
@@ -40,7 +44,9 @@ const updateVscSettings = async () => {
       newExtraPaths.push(revitApiStubsVersionPath);
     });
 
-    newExtraPaths.push(pyRevitMasterPath);
+    newExtraPaths.push(appdataPyRevitMasterPath);
+    newExtraPaths.push(programFilesPyRevitMasterPath);
+    newExtraPaths.push(ironPythonStubsPath);
 
     config.update(
       "python.analysis.extraPaths",

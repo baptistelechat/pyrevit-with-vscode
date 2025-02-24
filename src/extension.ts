@@ -4,15 +4,16 @@ import * as vscode from "vscode";
 import components from "./lib/commands/components";
 import docs from "./lib/commands/docs";
 import setup from "./lib/commands/setup";
-import pyRevitMasterPath from "./lib/constants/pyRevitMasterPath";
-import pyRevitPath from "./lib/constants/pyRevitPath";
+import { isPyRevitInstalled } from "./lib/constants/pyRevitPaths";
 import revitApiStubsPath from "./lib/constants/revitApiStubsPath";
 import checkOs from "./lib/utils/checkOs";
+import checkMaterialIconThemeExtension from "./lib/utils/setup/checkMaterialIconThemeExtension";
 import checkPyRevitLib from "./lib/utils/setup/checkPyRevitLib";
 import checkPythonExtension from "./lib/utils/setup/checkPythonExtension";
 import checkPythonInstallation from "./lib/utils/setup/checkPythonInstallation";
 import checkRevitApiStubs from "./lib/utils/setup/checkRevitApiStubs";
 import updateVscSettings from "./lib/utils/setup/updateVscSettings";
+import updateMaterialIconsConfig from "./lib/utils/updateMaterialIconsConfig";
 
 export function activate(context: vscode.ExtensionContext) {
   const windowsOs = checkOs();
@@ -41,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
 
     // Check if pyRevit is installed
-    if (!fs.existsSync(pyRevitPath) || !fs.existsSync(pyRevitMasterPath)) {
+    if (!isPyRevitInstalled()) {
       checkPyRevitLib();
     }
 
@@ -62,12 +63,41 @@ export function activate(context: vscode.ExtensionContext) {
       updateVscSettings();
     }
 
-    // Read "pyrevit-with-vscode.author" in setting.json
-    // setAuthor();
+    if (!vscode.extensions.getExtension("pkief.material-icon-theme")) {
+      checkMaterialIconThemeExtension();
+    } else {
+      updateMaterialIconsConfig();
+    }
+    // Create a watcher to detect new folders being added
+    const watcher = vscode.workspace.createFileSystemWatcher(
+      "**/{*.extension,*.tab,*.panel,*.stack,*.splitpushbutton,*.pulldown,*.pushbutton,*.urlbutton}"
+    );
 
-    // Extension "pyrevit-with-vscode" is now active!
-    console.log('Extension "pyrevit-with-vscode" is now active!');
+    // Trigger the update when a new matching folder is created
+    watcher.onDidCreate(async (uri) => {
+      console.log(`📁 New folder detected: ${uri.fsPath}`);
+      await updateMaterialIconsConfig();
+    });
+
+    watcher.onDidChange(async (uri) => {
+      console.log(`🔄 Folder changed: ${uri.fsPath}`);
+      await updateMaterialIconsConfig();
+    });
+
+    watcher.onDidDelete(async (uri) => {
+      console.log(`🗑️ Folder deleted: ${uri.fsPath}`);
+      await updateMaterialIconsConfig();
+    });
+
+    // Cleanup the watcher when the extension is deactivated
+    context.subscriptions.push(watcher);
   }
+
+  // Read "pyrevit-with-vscode.author" in setting.json
+  // setAuthor();
+
+  // Extension "pyrevit-with-vscode" is now active!
+  console.log('Extension "pyrevit-with-vscode" is now active!');
 }
 
 export function deactivate() {
