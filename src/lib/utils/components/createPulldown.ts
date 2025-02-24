@@ -7,17 +7,17 @@ import {
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
+import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
-import selectIcon from "./utils/selectIcon";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 
 const { t } = vscode.l10n;
 
-const createPushButton = async () => {
+const createPulldown = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
     showErrorMessage("No workspace folder found.");
@@ -123,32 +123,48 @@ const createPushButton = async () => {
       }
 
       if (typeof selectedPanelPath === "string") {
-        const buttonName = await vscode.window.showInputBox({
-          prompt: t("✨ Enter the name of the button"),
+        const pulldownName = await vscode.window.showInputBox({
+          prompt: t("⬇️ Enter the name of the button"),
         });
 
-        if (buttonName) {
-          const buttonPath = path.join(
+        if (pulldownName) {
+          const pulldownPath = path.join(
             selectedPanelPath,
-            `${buttonName}.pushbutton`
+            `${pulldownName}.pulldown`
           );
 
-          createDirectory(buttonPath);
+          createDirectory(pulldownPath);
 
-          const scriptPath = path.join(buttonPath, "script.py");
-          createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
+          const iconPath = path.join(pulldownPath, "icon.png");
+          const iconDarkPath = path.join(pulldownPath, "icon.dark.png");
 
-          const iconPath = path.join(buttonPath, "icon.png");
-          await selectIcon("light", iconPath, defaultDarkIconPath, 96, 96);
+          copyFile(defaultDarkIconPath, iconPath);
+          copyFile(defaultLightIconPath, iconDarkPath);
 
-          const iconDarkPath = path.join(buttonPath, "icon.dark.png");
-          await selectIcon("dark", iconDarkPath, defaultLightIconPath, 96, 96);
+          Array.from({ length: 3 }, (_, i) => {
+            const buttonName = `Hello World ${i + 1}`;
+            const buttonPath = path.join(
+              pulldownPath,
+              `${buttonName}.pushbutton`
+            );
 
-          showInformationMessage("PushButton created successfully");
+            createDirectory(buttonPath);
+
+            const scriptPath = path.join(buttonPath, "script.py");
+            createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
+
+            const iconPath = path.join(buttonPath, "icon.png");
+            const iconDarkPath = path.join(buttonPath, "icon.dark.png");
+
+            copyFile(defaultDarkIconPath, iconPath);
+            copyFile(defaultLightIconPath, iconDarkPath);
+          });
+
+          showInformationMessage("Pulldown created successfully");
         }
       }
     }
   }
 };
 
-export default createPushButton;
+export default createPulldown;

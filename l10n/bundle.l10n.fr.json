@@ -11,6 +11,9 @@
 
   "📁 Tab": "📁 Onglet",
   "📦 Panel": "📦 Groupe",
+  "🗃️ Stack": "🗃️ Pile",
+  "📂 Split Push Button" : "📂 Bouton avec menu déroulant",
+  "⬇️ Pull Down Button": "⬇️ Menu déroulant",
   "✨ Push Button": "✨ Bouton",
   "🔗 Url Button": "🔗 Url",
 
@@ -40,10 +43,9 @@
   "🐍 Install Python": "🐍 Installer Python",
   "📝 Update \"settings.json\"": "📝 Mettre à jour \"settings.json\"",
 
-
   "🎨 Select an icon option": "🎨 Sélectionner une option d'icône",
   "🎨 Enter a color": "🎨 Saisissez une couleur",
-  "⭕ Select an icon":"⭕ Sélectionnez une icône",
+  "⭕ Select an icon": "⭕ Sélectionnez une icône",
 
   "🐍 Default icon": "🐍 Icône par défaut",
   "💻 Load from my computer": "💻 Charger à partir de mon ordinateur",

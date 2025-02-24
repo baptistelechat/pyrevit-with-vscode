@@ -7,17 +7,17 @@ import {
 import defaultPyRevitScript from "../../constants/defaultPyRevitScript";
 import { showErrorMessage, showInformationMessage } from "../showMessage";
 import createExtension from "./createExtension";
+import copyFile from "./utils/copyFile";
 import createDirectory from "./utils/createDirectory";
 import createFileWithContent from "./utils/createFileWithContent";
 import getDirectories from "./utils/getDirectories";
 import selectExtension from "./utils/selectExtension";
-import selectIcon from "./utils/selectIcon";
 import selectPanel from "./utils/selectPanel";
 import selectTab from "./utils/selectTab";
 
 const { t } = vscode.l10n;
 
-const createPushButton = async () => {
+const createSplitPushButton = async () => {
   const workspacePath = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
   if (!workspacePath) {
     showErrorMessage("No workspace folder found.");
@@ -123,32 +123,42 @@ const createPushButton = async () => {
       }
 
       if (typeof selectedPanelPath === "string") {
-        const buttonName = await vscode.window.showInputBox({
-          prompt: t("✨ Enter the name of the button"),
+        const splitPushButtonName = await vscode.window.showInputBox({
+          prompt: t("📂 Enter the name of the button"),
         });
 
-        if (buttonName) {
-          const buttonPath = path.join(
+        if (splitPushButtonName) {
+          const splitPushButtonPath = path.join(
             selectedPanelPath,
-            `${buttonName}.pushbutton`
+            `${splitPushButtonName}.splitpushbutton`
           );
 
-          createDirectory(buttonPath);
+          createDirectory(splitPushButtonPath);
 
-          const scriptPath = path.join(buttonPath, "script.py");
-          createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
+          Array.from({ length: 3 }, (_, i) => {
+            const buttonName = `Hello World ${i + 1}`;
+            const buttonPath = path.join(
+              splitPushButtonPath,
+              `${buttonName}.pushbutton`
+            );
 
-          const iconPath = path.join(buttonPath, "icon.png");
-          await selectIcon("light", iconPath, defaultDarkIconPath, 96, 96);
+            createDirectory(buttonPath);
 
-          const iconDarkPath = path.join(buttonPath, "icon.dark.png");
-          await selectIcon("dark", iconDarkPath, defaultLightIconPath, 96, 96);
+            const scriptPath = path.join(buttonPath, "script.py");
+            createFileWithContent(scriptPath, defaultPyRevitScript(buttonName));
 
-          showInformationMessage("PushButton created successfully");
+            const iconPath = path.join(buttonPath, "icon.png");
+            const iconDarkPath = path.join(buttonPath, "icon.dark.png");
+
+            copyFile(defaultDarkIconPath, iconPath);
+            copyFile(defaultLightIconPath, iconDarkPath);
+          });
+
+          showInformationMessage("SplitPushButton created successfully");
         }
       }
     }
   }
 };
 
-export default createPushButton;
+export default createSplitPushButton;

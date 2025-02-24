@@ -39,14 +39,14 @@ const updateMaterialIconsConfig = async () => {
 
   const config = vscode.workspace.getConfiguration();
 
-  // 🔍 Récupérer la configuration actuelle des customClones
+  // 🔍 Retrieve the current customClones configuration
   const currentCustomClones: any[] =
     config.get("material-icon-theme.folders.customClones") || [];
 
-  // 🔍 Récupération des dossiers du projet
+  // 🔍 Retrieve project folders
   const projectDirs = getProjectStructure(workspacePath);
 
-  // 🎨 Définition des styles
+  // 🎨 Define styles
   const folderStyles: Record<
     string,
     { base: string; color: string; emoji: string }
@@ -62,6 +62,11 @@ const updateMaterialIconsConfig = async () => {
       base: "components",
       color: materialPalette["cyan-700"],
       emoji: "🗃️",
+    },
+    splitpushbutton: {
+      base: "plugin",
+      color: materialPalette["pink-300"],
+      emoji: "📂",
     },
     pulldown: {
       base: "element",
@@ -80,12 +85,21 @@ const updateMaterialIconsConfig = async () => {
     },
   };
 
-  // 📌 Regrouper les dossiers par type
+  // 📌 Retrieve existing colors
+  const existingColors: Record<string, string> = {};
+  currentCustomClones.forEach((clone) => {
+    const type = clone.name.replace(/^pyRevit\s/, "").toLowerCase();
+    if (folderStyles[type]) {
+      existingColors[type] = clone.color;
+    }
+  });
+
+  // 📌 Group folders by type
   const groupedFolders: Record<string, string[]> = {};
 
   projectDirs.forEach((dir) => {
     const match = dir.match(
-      /\.?(extension|tab|panel|stack|pulldown|pushbutton|urlbutton)$/
+      /.?(extension|tab|panel|stack|splitpushbutton|pulldown|pushbutton|urlbutton)$/
     );
     if (!match) {
       return;
@@ -98,64 +112,39 @@ const updateMaterialIconsConfig = async () => {
     groupedFolders[type].push(path.basename(dir));
   });
 
+  // 🆕 Create the new configuration
   const newCustomClones = Object.entries(groupedFolders).map(
     ([type, folders]) => {
       const style = folderStyles[type];
       const folderType = `${type[0].toUpperCase()}${type.slice(1)}`;
 
       console.log(
-        `${style.emoji} ${folderType}: ${folders.length} dossiers détectés.`
-      );
-
-      // 🛠️ Vérifier si un style existe déjà pour éviter d'écraser la couleur
-      const existingClone = currentCustomClones.find((clone) =>
-        clone.folderNames.some((name: string) => folders.includes(name))
+        `${style.emoji} ${folderType}: ${folders.length} folders detected.`
       );
 
       return {
         name: `pyRevit ${folderType}`,
         base: style.base,
-        color: existingClone ? existingClone.color : style.color,
+        color: existingColors[type] || style.color, // 🔥 Retains existing color if defined
         folderNames: folders,
       };
     }
   );
 
   if (newCustomClones.length === 0) {
-    vscode.window.showErrorMessage("Aucun dossier valide trouvé.");
+    vscode.window.showErrorMessage("No valid folders found.");
     return;
   }
 
-  // 📌 Fusionner les anciennes et nouvelles configurations sans doublons
-  const mergedCustomClones = [...currentCustomClones];
-
-  newCustomClones.forEach((newClone) => {
-    const existingIndex = mergedCustomClones.findIndex(
-      (clone) => clone.name === newClone.name
-    );
-
-    if (existingIndex !== -1) {
-      // Mise à jour des dossiers sans écraser la couleur
-      mergedCustomClones[existingIndex].folderNames = [
-        ...new Set([
-          ...mergedCustomClones[existingIndex].folderNames,
-          ...newClone.folderNames,
-        ]),
-      ];
-    } else {
-      mergedCustomClones.push(newClone);
-    }
-  });
-
-  // 📌 Mettre à jour la configuration VS Code
+  // 📌 Update VS Code configuration
   await config.update(
     "material-icon-theme.folders.customClones",
-    mergedCustomClones,
+    newCustomClones,
     vscode.ConfigurationTarget.Global
   );
 
   // vscode.window.showInformationMessage(
-  //   "Material Icon Theme updated successfully! 🎨"
+  //   "Material Icon Theme successfully updated! 🎨"
   // );
 };
 

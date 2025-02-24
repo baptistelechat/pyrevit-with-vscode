@@ -70,7 +70,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
     // Create a watcher to detect new folders being added
     const watcher = vscode.workspace.createFileSystemWatcher(
-      "**/{*.extension,*.tab,*.panel,*.stack,*.pulldown,*.pushbutton,*.urlbutton}"
+      "**/{*.extension,*.tab,*.panel,*.stack,*.splitpushbutton,*.pulldown,*.pushbutton,*.urlbutton}"
     );
 
     // Trigger the update when a new matching folder is created
