@@ -131,7 +131,18 @@ const updateMaterialIconsConfig = async () => {
     }
   );
 
-  if (newCustomClones.length === 0) {
+  // 📌 Merge existing and new configurations
+  const mergedCustomClones = [
+    ...currentCustomClones.filter(
+      (clone) =>
+        !Object.keys(folderStyles).includes(
+          clone.name.replace(/^pyRevit\s/, "").toLowerCase()
+        )
+    ),
+    ...newCustomClones,
+  ];
+
+  if (mergedCustomClones.length === 0) {
     vscode.window.showErrorMessage("No valid folders found.");
     return;
   }
@@ -139,7 +150,7 @@ const updateMaterialIconsConfig = async () => {
   // 📌 Update VS Code configuration
   await config.update(
     "material-icon-theme.folders.customClones",
-    newCustomClones,
+    mergedCustomClones,
     vscode.ConfigurationTarget.Global
   );
 
